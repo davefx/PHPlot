@@ -1,0 +1,13 @@
+{
+    "name": "davefx/phplot",
+    "description": "PHPlot - Create charts in PHP",
+    "keywords": [ "phplot", "chart" ],
+    "homepage": "http://phplot.sourceforge.net",
+    "license": "LGPL",
+    "require": {
+        "php": ">5.3.0"
+    },
+    "autoload": {
+        "classmap": ["phplot/"]
+    }
+}
