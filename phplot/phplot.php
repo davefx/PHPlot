@@ -397,7 +397,7 @@ class PHPlot
      *   $output_file : Filename for output. Omit, or NULL, or '' to mean no output file.
      *   $input_file : Path to a file to be used as background. Omit, NULL, or '' for none.
      */
-    function PHPlot($width=600, $height=400, $output_file=NULL, $input_file=NULL)
+    function __construct($width=600, $height=400, $output_file=NULL, $input_file=NULL)
     {
         $this->initialize('imagecreate', $width, $height, $output_file, $input_file);
     }
