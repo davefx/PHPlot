@@ -1,6 +1,6 @@
 {
-    "name": "davefx/phplot",
-    "description": "PHPlot - Create charts in PHP",
+    "name": "glady/phplot",
+    "description": "PHPlot - Create charts in PHP - forked from davefx/phplot",
     "keywords": [ "phplot", "chart" ],
     "homepage": "http://phplot.sourceforge.net",
     "license": "LGPL",
