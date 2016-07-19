@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: bars-example.php 1001 2011-08-08 02:22:55Z lbayuk $
 # PHPlot Example: Bar chart, annual data
 require_once 'phplot.php';
 

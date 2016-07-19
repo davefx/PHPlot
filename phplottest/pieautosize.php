@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: pieautosize.php 1031 2011-12-30 16:58:55Z lbayuk $
 # PHPlot test - Pie Chart Sizing - auto vs manual - baseline
 require_once 'phplot.php';
 

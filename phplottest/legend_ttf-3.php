@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: legend_ttf-3.php 1001 2011-08-08 02:22:55Z lbayuk $
 # SetLegendStyle - TrueTrype, left aligned text, big font
 $tp = array(
   'suffix' => ' (TrueType large, text=left)',   # Title part 2

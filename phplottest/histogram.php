@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: histogram.php 1196 2012-02-24 23:51:04Z lbayuk $
 # PHPlot Example - Histogram of a Photograph
 # Display a photo image with its value histogram overlaid
 # Note: This requires PHPlot-5.1.1 or higher for Truecolor support.

@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: defaultfont2b.php 1001 2011-08-08 02:22:55Z lbayuk $
 # Testing phplot - Default TT font (2b): Local path and named font.
 # This test requires a specific font (see TEST_FONT) be present in the images/
 # directory. The listed font is redistributable under the Open Fonts License.

@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: data_table.example1.php 999 2011-08-05 19:00:48Z lbayuk $
 # phplot / contrib / data_table example 1:  Stand-alone data tables
 # This example does not use PHPlot. Output is a PNG file with multiple
 # data tables, with varying parameters.

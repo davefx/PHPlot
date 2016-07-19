@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: u.dvlpos.php 1376 2012-08-15 02:09:16Z lbayuk $
 # Unit test for CheckDataValueLabel label position and alignment
 require_once 'phplot.php';
 require 'usupport.php';

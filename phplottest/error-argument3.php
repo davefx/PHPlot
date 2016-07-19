@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: error-argument3.php 1001 2011-08-08 02:22:55Z lbayuk $
 # PHPlot error test - argument error with returning handler, redo the graph.
 require 'esupport.php';
 set_error_handler('test_catch_return');

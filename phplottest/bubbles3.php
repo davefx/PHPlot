@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: bubbles3.php 1001 2011-08-08 02:22:55Z lbayuk $
 # PHPlot test: Bubble plot - custom data color callback,
 require_once 'phplot.php';
 

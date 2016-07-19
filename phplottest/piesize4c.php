@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: piesize4c.php 1066 2011-12-30 17:01:53Z lbayuk $
 # PHPlot test - Pie Chart Sizing and Label Variations - Label Type (c)
 # This is a parameterized test. See the script named at the bottom for details.
 $tp = array(

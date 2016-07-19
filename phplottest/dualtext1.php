@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: dualtext1.php 1001 2011-08-08 02:22:55Z lbayuk $
 # Dual text types: GD and TTF, default TTF, GD X and Y titles
 # This requires PHPlot > 5.0.5
 require_once 'phplot.php';

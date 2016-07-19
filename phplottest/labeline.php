@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: labeline.php 1001 2011-08-08 02:22:55Z lbayuk $
 # Test for X Label Alignment problem with TTF (PHP-5.0.5): Bug # 1891636
 
 require_once 'config.php';

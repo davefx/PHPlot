@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: colorcall10.php 1001 2011-08-08 02:22:55Z lbayuk $
 # Color callback - data-data-error plots, baseline
 # This is the baseline script. Other scripts define the variables below,
 # then include this script.

@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: labelformats2.php 1001 2011-08-08 02:22:55Z lbayuk $
 # Test types of label formatting 2 (custom, data:3)
 require_once 'phplot.php';
 

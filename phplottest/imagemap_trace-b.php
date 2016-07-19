@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: imagemap_trace-b.php 1189 2012-02-21 21:00:25Z lbayuk $
 # PHPlot test: Bar chart, with image map area outlines shown.
 # This produces a plot image with the areas that would be in an image map
 # outlined. It does not produce HTML or an image map.

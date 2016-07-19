@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: compare_tests.php 1778 2015-11-04 01:57:51Z lbayuk $
 # compare_tests : Check test output from PHPlot testing
 
 # Default image viewer command. This needs to accept 1 or 2 image file
@@ -10,6 +10,18 @@ define('DEFAULT_VIEWER', 'qiv -p');
 # Default text file compare command.
 # The DIFF environment variable overrides this.
 define('DEFAULT_DIFF', 'diff -u');
+
+# Image file converters and flag indicating that compare_tests should
+# recheck images that differ after stripping meta-data:
+define('DO_IMAGE_RECHECK', TRUE);
+# If DO_IMAGE_RECHECK is true, these must be defined to command lines
+# that convert a file with the specified extension on standard input
+# to a 'plain' form like PNM on standard output:
+$converters = array(
+  'gif' => 'giftopnm',
+  'png' => 'pngtopnm',
+  'jpg' => 'jpegtopnm',
+);
 
 # Display usage and exit:
 function usage()
@@ -34,14 +46,50 @@ file comparison. The default is: %s
 
 }
 
+# After they have been found to differ in a byte-for-byte check, re-check
+# them to see if they are image files that match when converted to PNM
+# (which strips off any metadata).
+# This is used by compare_files if DO_IMAGE_RECHECK is defined above.
+# Returns TRUE if the files are image files of the same type and match after
+# conversion, else FALSE.
+function recompare_files($file1, $file2)
+{
+  global $converters;
+
+  $ext1 = strtolower(pathinfo($file1, PATHINFO_EXTENSION));
+  $ext2 = strtolower(pathinfo($file2, PATHINFO_EXTENSION));
+
+  // Same file extensions? If not, then no match.
+  if ($ext1 != $ext2) return FALSE;
+
+  // Convertable image file? If not, then no match.
+  if (!isset($converters[$ext1])) return FALSE;
+
+  // Build command lines to convert them:
+  $cmd1 = $converters[$ext1] . ' 2> /dev/null < ' . $file1;
+  $cmd2 = $converters[$ext2] . ' 2> /dev/null < ' . $file2;
+  
+  // Convert, compare, and return the result:
+  return (`$cmd1` === `$cmd2`);
+}
+
 # Compare two files, byte for byte, return True if match else False.
-# The files (images) aren't too big, so just read the whole thing in
-# to memory and compare.
+# The files (usually images) aren't too big, so just read them into
+# memory and compare.
+# In some cases, image files can differ only by meta-data (e.g. PNG files
+# from different versions of libgd or libpng). To avoid many false difference
+# reports, there is an option for a second-stage compare (see recompare_files).
 function compare_files($file1, $file2)
 {
-  return (($s1 = file_get_contents($file1)) !== False
-       && ($s2 = file_get_contents($file2)) !== False
-       && $s1 === $s2);
+  if (($s1 = file_get_contents($file1)) === False
+        || ($s2 = file_get_contents($file2)) === False) return FALSE;
+  if ($s1 === $s2) return TRUE;
+
+  // Files differ, but maybe check the images without meta-data:
+  if (DO_IMAGE_RECHECK) return recompare_files($file1, $file2);
+
+  // The files differ:
+  return FALSE;
 }
 
 # Return true if the given filename seems to be an image file:
@@ -84,6 +132,40 @@ function view_files($filename, $refname)
         echo "=====\n";
     }
 }
+
+# Return a sorted list of image files and text output files in the $dir:
+# This also uses the global $match_pattern as a filter, if not empty.
+function get_file_list($dir)
+{
+    global $match_pattern;
+
+    $list = array();
+    $d = opendir($dir);
+    if (!$d) die("Failed to open directory: $dir\n");
+    while (($filename = readdir($d)) !== False) {
+        # Look only at image and .out files:
+        if (preg_match('/\\.(png|gif|jpg|out)$/i', $filename)) {
+            if (empty($match_pattern) || fnmatch($match_pattern, $filename)) {
+                $list[] = $filename;
+            }
+        }
+    }
+    sort($list);
+    return $list;
+}
+
+# Reporting helper, used to show list of files
+function show_result_details($what, $list)
+{
+    if (count($list) == 0) return;
+    echo "\nFiles that $what:\n    "
+          . wordwrap(implode(' ', $list), 72, "\n    ")
+          . "\n";
+}
+
+
+
+# MAIN:
 
 # Get the command lines to use for viewer and text file compare:
 if (($viewer = getenv('VIEWER')) === False)
@@ -136,24 +218,12 @@ $s_new = array();
 $n_total = 0;   # Total result files, before -m filtering.
 
 # Get a sorted list of image files and text output files from the outdir:
-$o_list = array();
-$d = opendir($outdir);
-if (!$d) die("Failed to open directory: $outdir\n");
-while (($filename = readdir($d)) !== False) {
-    # Look only at image and .out files:
-    if (preg_match('/\\.(png|gif|jpg|out)$/i', $filename)) {
-        $n_total++;
-        if (empty($match_pattern) || fnmatch($match_pattern, $filename)) {
-            $o_list[] = $filename;
-        }
-    }
-}
+$o_list = get_file_list($outdir);
 $n_check = count($o_list);
 if ($n_check == 0) {
     fwrite(STDERR, "Error: No matching files to check\n");
     exit(1);
 }
-sort($o_list);
 
 # Process each result file:
 foreach ($o_list as $filename) {
@@ -182,12 +252,12 @@ foreach ($o_list as $filename) {
     }
 }
 
-# Report the results:
+# Check for any deleted or missing results files:
+$s_gone = array_diff(get_file_list($refdir), $o_list);
+$n_gone = count($s_gone);
 
-echo "\nResults: Same: $n_same,  New: $n_new,  Differ: $n_diff\n";
-if (count($s_diff) > 0)
-    echo "\nFiles that differ: " . implode(', ', $s_diff) . "\n";
-if (count($s_new) > 0)
-    echo "\nFiles that are new: " . implode(', ', $s_new) . "\n";
-if (($n_filtered_out = $n_total - $n_check) > 0)
-    echo "\nWarning: $n_filtered_out result file(s) were filtered out.\n";
+# Report the results:
+echo "\nResults: Same: $n_same,  Differ: $n_diff,  New: $n_new,  Removed: $n_gone\n";
+show_result_details('differ',  $s_diff);
+show_result_details('are new',     $s_new);
+show_result_details('were removed', $s_gone);

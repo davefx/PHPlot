@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: piesize6c.php 1084 2011-12-30 17:03:15Z lbayuk $
 # PHPlot test - Pie Chart Sizing and Label Variations - label margin check (c)
 # This is a parameterized test. See the script named at the bottom for details.
 $tp = array(

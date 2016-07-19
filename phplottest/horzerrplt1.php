@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: horzerrplt1.php 1588 2013-04-15 00:56:16Z lbayuk $
 # PHPlot test: Horizontal error plots with style controls
 # This is a parameterized test. See the script named at the bottom for details.
 $tp = array(

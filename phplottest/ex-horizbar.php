@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: ex-horizbar.php 1001 2011-08-08 02:22:55Z lbayuk $
 # PHPlot Example - Horizontal Bars
 require_once 'phplot.php';
 

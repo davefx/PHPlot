@@ -1,13 +1,13 @@
 <?php
-# $Id$
+# $Id: callback2.php 1690 2015-08-30 00:59:17Z lbayuk $
 # Testing phplot: Callback with method, extended class.
 require_once 'phplot.php';
 
 class my_PHPlot extends PHPlot
 {
-  function my_PHPlot($width=600, $height=400, $outfile=NULL, $infile=NULL)
+  function __construct($width=600, $height=400, $outfile=NULL, $infile=NULL)
   {
-    $this->PHPlot($width, $height, $outfile, $infile);
+    parent::__construct($width, $height, $outfile, $infile);
   }
 
   function callback($img, $arg)

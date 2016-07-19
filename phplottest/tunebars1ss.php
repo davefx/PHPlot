@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: tunebars1ss.php 1001 2011-08-08 02:22:55Z lbayuk $
 # PHPlot test: Bar chart tuning variables - full width shaded stackedbars
 # This is a parameterized test. See the script named at the bottom for details.
 $tp = array(

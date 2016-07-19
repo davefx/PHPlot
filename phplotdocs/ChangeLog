@@ -4,6 +4,170 @@ Note: This is a more complete ChangeLog than the one in Appendix A of the
 manual, which only contains summaries of changes.
 -----------------------------------------------------------------------------
 
+2016-01-01
+    * main.xml: Indicate next version 6.2.1; extend copyright years to 2016.
+
+    Changes for Feature Request #59, legend border controls:
+    * concepts.xml: Updated color and other information on legend border.
+    * functions.xml: Added links to 2 new functions.
+    * reference.xml: Documented 2 new functions: SetDrawLegendBorder and
+       SetLegendBorderColor.
+    * variables.list: Added 3 new variables and changed 1 description.
+
+2015-11-05
+    * Makefile: Added 2 missing static images (thumbnails for new plot
+      types) which were omitted from the manual release.
+
+2015-11-02
+    * concepts.xml: Added text about using PHP anonymous functions for
+      custom label formatting, with an example.
+    * advanced.xml: Added text about using PHP anonymous functions for
+      callbacks, with an example under Custom Data Color Selection.
+
+    For release with PHPlot-6.2.0:
+    * changelog.xml: Update with summary of all changes for 6.2.0.
+
+2015-10-31
+    Changes for Feature Request #58, data borders for area plot types. This
+    extends the 2015-10-30 change to area and stackedarea plot types.
+    * concepts.xml: Added 2 plot types to those that support data borders.
+    * reference.xml: Updated description of SetDrawDataBorders() and
+      SetDataBorderColors().
+
+2015-10-30
+    * README: Updated tool versions.
+
+    Continued documenting new plot types. Data borders previously applied
+    only to bars and stackedbars, and now applies to the new plot types too.
+    * advanced.xml: In 'Custom Data Color Selection', fixed explanation of
+      data border colors.
+    * concepts.xml: In 'Plot Element Colors', renamed 'bar chart bar
+      borders' to 'data borders', because it applies to other types too.
+      In the descriptions of the new plot types, added text on data borders.
+      in 'Plotting Colors', generalized the description of data borders.
+      Also fixed description of borders vs shading in 'bars' and 'stackedbars'
+      plot types (this was overlooked by a previous PHPlot change).
+    * variables.list: Fixed description of 3 variables related to data borders.
+    * reference.xml: Updated description of SetDrawDataBorders() and
+      SetDataBorderColors() which now apply to more plot types.
+
+2015-10-29
+    Continue documenting new plot types:
+    * advanced.xml: Add to lists of plot types in sections on custom color
+      selection, streaming, and image maps.
+    * concepts.xml: Add to lists of plot types in sections on duplicate and
+      out-of-order points, missing data, and element colors.
+    * reference.xml: List new plot type in SetLegendReverse.
+
+2015-10-28
+    Document two new plot types 'squaredarea' and 'stackedsquaredarea':
+    (More changes to come)
+    * Makefile: Make 2 new examples
+    * examples/squaredarea1.php: New example
+    * examples/stackedsquaredarea1.php: New example
+    * examples.xml: Added 2 examples for the new plot types.
+    * reference.xml: Add 2 plot types to SetPlotType().
+    * etc/thumbnail.php: Updated the script to get a list of plot types from
+      PHPlot, rather than listing them in the script. (It is still necessary
+      to edit the script to add a data setup for each new plot type, though.)
+      Added setups for the 2 new plot types.
+    * images/thumbnail*.png: Regenerated using updated script, including
+      2 new thumbnails for the new plot types.
+    * developer.xml: Documented 2 new internal functions DrawSquaredArea()
+      and SetupAreaPlot(). Link all main plot drawing functions to their
+      plot type descriptions.
+    * concepts.xml: Add two new plot types to the Plot Types section.
+      Added explanation (in footnote) of area filling for 'area' plots.
+      Other minor changes to the Plot Types section.
+
+    Also:
+    * main.xml: Updated copyright year and next PHPlot version.
+    * .ispell_words: Added new function names and other words.
+
+2015-10-23
+    Document extension to 'printf' label formatting:
+    * reference.xml: SetXLabelType, SetXDataLabelType, SetYLabelType, and
+      SetYDataLabelType: 'printf' label format type now accepts 1, 2, or 3
+      format strings.
+
+      Add note to SetPieLabelType that it works there too but is not useful.
+
+      Fixed the examples under SetXLabelType.  Some of the examples had
+      errors. These have now been copied into a unit test in the test suite
+      so they can be checked. All have been corrected, and new examples were
+      added. The single Examples table became too long (for PDF), so it had
+      to be broken into one table per example. This paginates better in PDF,
+      but the down-side is the HTML version has inconsistent column widths
+      (this is a Docbook issue).
+    * concepts.xml: Document 'printf' label formatting with 2 or 3 format
+      strings.
+    * developer.xml: label_format[]['printf_format'] can now be an array
+      of 1-3 format strings.
+
+2015-10-20
+    * developer.xml: Correction: CheckLabels() does not apply defaults
+      for data labels from tick labels - this was moved to FormatLabel
+      in PHPlot-6.0.0 to better handle multi-plotting.
+      Also corrected in the description of the label_format array.
+
+    Removed dependency on Tcl when building manual.
+    * gen.vardoc: Rewrite in PHP (which is already required for manual
+      building).
+    * Makefile: Use PHP to run gen.vardoc
+    * README: Remove Tcl dependency.
+
+    * concepts.xml: Document that for a single data set, area and
+      stackedarea plots are identical, as are bars and stackedbars.
+
+2015-08-29
+    Changes for PHP7:
+    * advanced.xml: Changed "Object Methods as Callbacks" to use the
+      correct constructor name convention, and rewrote the note to
+      explain that the old usage is deprecated at PHP7.
+      Also: delete notes about PHP4.
+    * advanced.xml, install.xml, reference.xml: Minor changes for PHP7.
+
+2015-03-25
+    Changed information on dashed line style internals, from  bug #170:
+    * variables.list: Changed description of default_dashed_style variable.
+    * developer.xml: Rewrote explanation of SetDashedStyle().
+
+2015-03-20
+    Found while doing Feature Request #55 (phpdoc comments):
+    * developer.xml:
+      + Internal CheckDataValueLabels() is in fact used for both vertical
+        and horizontal plots.
+      + Internal CalcRangeInit() argument list and return value were
+        corrected. (The code changed before 6.0.0 release but the change
+        was omitted from the manual.)
+      + Fix typos in FormatLabel() and tile_img().
+    * variables.list:
+      + Fix 3 minor typos in variable descriptions, 1 out-of-order entry
+
+2013-11-20
+    * concepts.xml: Rename subsection "Using Special Characters" to "Using
+      Extended Characters". Edit to widen the scope, and add a third method:
+      UTF-8 encoded characters can be entered directly in PHP strings (if
+      you can figure out how to input them).
+
+    * examples/boxplot1.php: Fix for PDF production (prevent para overflow).
+
+2013-11-19
+    Fix more errors found while doing Feature Request #55 (phpdoc comments):
+    * reference.xml:
+      + SetDrawBrokenLines() applies to X also, for horizontal plots.
+        Also add link to Concepts section on missing data.
+      + SetLegend() was missing information on and link to SetLegendReverse().
+      + SetLegendReverse() fix typo and rewrite description.
+      + SetPrecisionX() and SetPrecisionY(): fix summary and notes, clarify
+        and correct what types of labels these apply to.
+
+2013-11-04
+    * reference.xml: Add missing reference from SetLightGridColor() to
+      Y data label lines.
+    * concepts.xml, reference.xml, examples.xml, developer.xml: Fix several
+      uses of "data lines" that should be "data label lines".
+
 2013-05-11 Released manual dated 2013-05-11 for PHPlot-6.1.0
 
 2013-05-09
@@ -1566,4 +1730,4 @@ manual, which only contains summaries of changes.
 
 2005-02-06 Released draft manual tagged REL20050206 dated 2005-02-06
 
-$Id$
+$Id: ChangeLog 1793 2016-01-04 22:47:59Z lbayuk $

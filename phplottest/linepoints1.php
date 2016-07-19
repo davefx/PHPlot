@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: linepoints1.php 1376 2012-08-15 02:09:16Z lbayuk $
 # PHPlot Example: Line-Point plot showing point shapes
 # If the variable $use_default_shapes is set (from a calling script), show
 # the default shapes, otherwise show all shapes.

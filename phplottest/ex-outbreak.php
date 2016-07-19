@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: ex-outbreak.php 1001 2011-08-08 02:22:55Z lbayuk $
 # PHPlot Example: Plot Overlay (lines and stackedbars)
 require_once 'phplot.php';
 

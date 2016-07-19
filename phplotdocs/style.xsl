@@ -3,7 +3,7 @@
                 version='1.0'
                 xmlns="http://www.w3.org/TR/xhtml1/transitional"
                 exclude-result-prefixes="#default">
-<!-- $Id$ -->
+<!-- $Id: style.xsl 677 2010-09-09 02:29:22Z lbayuk $ -->
 <!-- Docbook XML Style sheet for PHPlot Reference Manual -->
 
 <!-- Load the DocBook XML Style sheet for separate (chunked) XHTML files.

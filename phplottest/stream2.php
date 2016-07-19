@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: stream2.php 1376 2012-08-15 02:09:16Z lbayuk $
 # PHPlot Unit Test - streaming plots
 # Notes:
 # As the tests under the PHP CLI, there is no way to capture the output

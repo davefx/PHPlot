@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: drawmessage.php 1155 2012-02-06 16:52:04Z lbayuk $
 # PHPlot Test: DrawMessage() message image - master script
 require_once 'config.php'; // For TT fonts
 require_once 'phplot.php';

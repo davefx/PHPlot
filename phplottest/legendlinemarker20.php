@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: legendlinemarker20.php 1442 2012-12-24 02:44:50Z lbayuk $
 # PHPlot test: Legend with line markers, case: 2,0
 # This is a parameterized test. See the script named at the bottom for details.
 $tp = array(

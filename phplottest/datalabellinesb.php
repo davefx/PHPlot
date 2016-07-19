@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: datalabellinesb.php 1209 2012-03-17 01:28:47Z lbayuk $
 # PHPlot test: Data Label Lines - case 11
 # This is a parameterized test. See the script named at the bottom for details.
 $tp = array(

@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: ex-pielabeltype3.php 1026 2011-12-30 16:58:32Z lbayuk $
 # PHPlot Example: Pie Chart Label Types - Formatted values as labels
 # This requires PHPlot >= 5.6.0
 require_once 'phplot.php';

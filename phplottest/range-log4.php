@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: range-log4.php 1623 2013-04-26 21:57:53Z lbayuk $
 # PHPlot test: Log/log scales
 # This is a parameterized test. See the script named at the bottom for details.
 $tp = array(

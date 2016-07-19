@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: serialize1.php 1260 2012-04-06 22:10:40Z lbayuk $
 # PHPlot unit test - Serialize/unserialize
 # This compares a plot with the same plot produced from a serialized/
 # unserialized copy of the PHPlot object.

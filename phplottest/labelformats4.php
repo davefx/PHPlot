@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: labelformats4.php 1001 2011-08-08 02:22:55Z lbayuk $
 # Test types of label formatting 4 (time, data:0:prefix+suffix)
 require_once 'phplot.php';
 $data = array();

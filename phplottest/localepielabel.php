@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: localepielabel.php 1167 2012-02-17 18:23:34Z lbayuk $
 # PHPlot test: Error (notice level) formatting pie label in PT locale
 # Bug #3488064 "Pie label failures in locales with comma decimal"
 require_once 'phplot.php';

@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: drawtextfont.php 1482 2012-12-29 22:48:13Z lbayuk $
 # Testing phplot - DrawText font argument changes at phplot-6.0.0
 require_once 'phplot.php';
 require_once 'config.php'; // For TTF fonts

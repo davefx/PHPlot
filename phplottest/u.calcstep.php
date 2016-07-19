@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: u.calcstep.php 1556 2013-03-27 00:25:01Z lbayuk $
 # PHPlot unit test: functions used by CalcPlotAreaWorld to calculate tick step
 # This checks out CalcStep125(), CalcStepDateTime(), and CalcStepBinary()
 require_once 'phplot.php';

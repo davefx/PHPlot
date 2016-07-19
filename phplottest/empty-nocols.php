@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: empty-nocols.php 1394 2012-09-11 01:43:21Z lbayuk $
 # PHPlot test - empty plot with no Y values at all
 # Note: This differs from empty-plot.php, which has a data
 # array containing y='' for each row, column. This test has

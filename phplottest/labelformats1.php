@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: labelformats1.php 1001 2011-08-08 02:22:55Z lbayuk $
 # Test types of label formatting 1 (data:2, printf:%e)
 require_once 'phplot.php';
 $data = array();

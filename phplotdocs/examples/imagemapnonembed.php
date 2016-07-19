@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: imagemapnonembed.php 1560 2013-03-27 20:22:36Z lbayuk $
 # PHPlot example: Image Map and Non-embedded Plot Image
 # This scripts creates a PHPlot plot image and an image map, without using
 # embedded (data-url) images. The down-side is that this script has to 

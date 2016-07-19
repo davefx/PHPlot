@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: imagemap_html-pt.php 1219 2012-03-19 21:16:21Z lbayuk $
 # PHPlot Test - Image map and embedded image - points
 # With tooltip text showing point value
 # This writes an HTML file to the directory named by the environment

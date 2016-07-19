@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: boxplot-tune.php 1615 2013-04-23 22:15:07Z lbayuk $
 # PHPlot test: Box plot - tuning parameters
 require_once 'phplot.php';
 # This is a parameterized test. Other scripts can set $tp and then include

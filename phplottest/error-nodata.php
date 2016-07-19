@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: error-nodata.php 1001 2011-08-08 02:22:55Z lbayuk $
 # PHPlot error test: bug 1446523, part 2 only: No data array
 require_once 'phplot.php';
 

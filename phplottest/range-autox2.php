@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: range-autox2.php 1557 2013-03-27 00:25:37Z lbayuk $
 # PHPlot Test: for reference manual, tick increment calculation
 # This is a parameterized test. See the script named at the bottom for details.
 $tp = array(

@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: title_text.php 1001 2011-08-08 02:22:55Z lbayuk $
 # Testing phplot - Title issues: order dependency (bug #1816844), alignment,
 # multi- vs single-line, fonts.
 # This uses config.php to identify TrueType font locations and names.

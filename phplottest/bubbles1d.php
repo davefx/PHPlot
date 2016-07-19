@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: bubbles1d.php 1001 2011-08-08 02:22:55Z lbayuk $
 # PHPlot test: Bubble plot - Negative, 0 data
 # This is a parameterized test. See script named below for details.
 $subtitle = "Negative and Zero sizes";

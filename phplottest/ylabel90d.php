@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: ylabel90d.php 1001 2011-08-08 02:22:55Z lbayuk $
 # PHPlot bug 1813021 - Miss-positioned right-just. vert. text
 # PHPlot < 5.0.4 did not position 90 degree GD text correctly
 # for Right horizontal justification.

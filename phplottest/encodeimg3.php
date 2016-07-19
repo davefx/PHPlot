@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: encodeimg3.php 1001 2011-08-08 02:22:55Z lbayuk $
 # PHPlot test: Return image encoded as base64
 require_once 'phplot.php';
 $data = array();

@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: resets2.php 1001 2011-08-08 02:22:55Z lbayuk $
 # Testing PHPlot: Set/Reset parameters - case 1
 # This produces 2 plots: one with parameters set, and
 # the second after reset.

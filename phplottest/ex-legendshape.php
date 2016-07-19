@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: ex-legendshape.php 1525 2013-03-02 18:31:29Z lbayuk $
 # PHPlot Example: Linepoints plot with legend using color boxes or shape markers
 require_once 'phplot.php';
 

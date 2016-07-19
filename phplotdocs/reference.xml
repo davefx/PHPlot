@@ -1,4 +1,4 @@
-<!-- $Id$
+<!-- $Id: reference.xml 1797 2016-01-04 22:48:08Z lbayuk $
      Reference section for PHPlot Reference Manual
 
   Note: Part I is <part>, Part II is a <reference>, so force the label.
@@ -827,7 +827,7 @@ assignment was used. This quasi-destructor was removed at PHPlot-5.0.4
 because it interfered with memory deallocation until the script ended.
 So the reference assignment should not be used.
 In addition, reference assignment of a newly created object instance
-is deprecated starting with PHP5.
+is deprecated starting with PHP5, and removed in PHP7.
     </para>
   </refsect1>
 </refentry>
@@ -1420,7 +1420,7 @@ as of PHPlot-5.0.5 and are no longer considered experimental.
 
   <refnamediv>
     <refname>SetDataBorderColors</refname>
-    <refpurpose>Set the rectangle border color on bars and stacked bars</refpurpose>
+    <refpurpose>Set the data border colors</refpurpose>
   </refnamediv>
 
   <refsynopsisdiv>
@@ -1430,11 +1430,17 @@ as of PHPlot-5.0.5 and are no longer considered experimental.
   <refsect1>
     <title>Description</title>
     <para>
-<function>SetDataBorderColors</function> sets the colors used for the
-borders of the bars and stacked bars for plot types 'bars' and
-'stackedbars'. By default, the borders are only drawn if shading is turned off
-with <xref linkend="SetShading" />.
-Shaded bar and stackedbar plots do not use data borders by default.
+<function>SetDataBorderColors</function> sets the colors used for data borders
+on supported plot types.
+For plot types <link linkend="plottype-bars">bars</link> and
+<link linkend="plottype-stackedbars">stackedbars</link>,
+these are the borders around the individual bars or bar segments in the plot.
+For plot types
+<link linkend="plottype-area">area</link>,
+<link linkend="plottype-squaredarea">squaredarea</link>,
+<link linkend="plottype-stackedarea">stackedarea</link>, and
+<link linkend="plottype-stackedsquaredarea">stackedsquaredarea</link>,
+these are outlines of the filled areas.
     </para>
   </refsect1>
 
@@ -1445,7 +1451,7 @@ Shaded bar and stackedbar plots do not use data borders by default.
         <term><replaceable>$border</replaceable></term>
         <listitem>
           <para>
-An array of color values, one for the bar border of each data set.
+An array of color values, one for the border of each data set.
 Or, a single color value (not an array) to use for all data sets.
 For other possibilities, see Notes.
 See <xref linkend="conc-colors" /> for more on color values.
@@ -1466,12 +1472,24 @@ If this function is never called, a default color map is used which sets all
 data borders to black.
     </para>
     <para>
-Data border colors are only used used for plot types 'bars' and 'stackedbars'.
-By default, unshaded plots (<xref linkend="SetShading"/><literal>(0)</literal>)
+Data borders can be used with plot types <literal>bars</literal> and
+<literal>stackedbars</literal>.
+With these plot types, by default,
+unshaded plots (<xref linkend="SetShading"/><literal>(0)</literal>)
 have data borders, and shaded plots have a 3D-look and no data borders.
 If you want unshaded plots with no data borders, use
 <xref linkend="SetDrawDataBorders"/><literal>(FALSE)</literal> to disable
 the borders.  You can enable data borders on shaded plots with
+<xref linkend="SetDrawDataBorders"/><literal>(TRUE)</literal>.
+    </para>
+    <para>
+Data borders can also be used with plot types
+<literal>area</literal>,
+<literal>squaredarea</literal>,
+<literal>stackedarea</literal>, and
+<literal>stackedsquaredarea</literal>.
+With these plot types, by default, data borders are not drawn.
+You can enable data borders for these plot types with
 <xref linkend="SetDrawDataBorders"/><literal>(TRUE)</literal>.
     </para>
     <para>
@@ -1500,10 +1518,19 @@ This is used internal to PHPlot for one-time initialization.
 A data colors callback, as described in
 <xref linkend="adv-datacolor-callback" />,
 also controls selection of the color for data borders (if used).
+Note this does not apply to plot types that do not use the data colors
+callback.
     </para>
   </refsect1>
   <refsect1>
     <title>History</title>
+    <para>
+Starting with PHPlot-6.2.0, data borders are available with
+<literal>area</literal> and <literal>stackedarea</literal> plot types,
+and with the new
+<literal>squaredarea</literal> and <literal>stackedsquaredarea</literal>
+plot types.
+    </para>
     <para>
 Before PHPlot-6.0.0, unshaded bar and stackedbar plots always had data borders, 
 and shaded bar and stackedbar plots never had data borders.
@@ -2201,7 +2228,7 @@ This behavior of this function was changed significantly at PHPlot-5.0rc3.
     <title>Description</title>
     <para>
 <function>SetDrawBrokenLines</function> determines how to plot lines with
-missing data points (that is, missing Y values). By default, PHPlot will
+missing data points. By default, PHPlot will
 act as if the point does not exist, connecting the points before and after
 the missing datum in the usual way. Use SetDrawBrokenLines to leave a gap
 between the points before and after missing data instead.
@@ -2218,7 +2245,7 @@ This only applies to 'lines', 'linepoints', and 'squared' plot types.
         <term><replaceable>$bl</replaceable></term>
         <listitem>
           <para>
-True to break the lines at missing Y data points. False to connect the
+True to break the lines at missing data points. False to connect the
 lines around missing data.
           </para>
         </listitem>
@@ -2232,8 +2259,10 @@ lines around missing data.
 The default is to ignore missing data and connect lines around missing points.
     </para>
     <para>
-A missing Y value can be represented in the data array by an empty string.
-(Anything non-numeric works.)
+A missing data point is indicated by an empty string in the corresponding
+position for the dependent variable value in the data array.
+This is the Y value for vertical plots, or X value for horizontal plots.
+See <xref linkend="conc-datatypes-missing"/> for more information.
     </para>
   </refsect1>
 </refentry>
@@ -2283,7 +2312,7 @@ True to use dashed lines, False to use solid lines.
 
   <refnamediv>
     <refname>SetDrawDataBorders</refname>
-    <refpurpose>Enable or disable drawing of data borders on bar and stackedbar plots</refpurpose>
+    <refpurpose>Enable or disable drawing of data borders</refpurpose>
   </refnamediv>
 
   <refsynopsisdiv>
@@ -2294,9 +2323,16 @@ True to use dashed lines, False to use solid lines.
     <title>Description</title>
     <para>
 <function>SetDrawDataBorders</function> enables or disables drawing of the
-data borders on <link linkend="plottype-bars">bars</link> and
-<link linkend="plottype-stackedbars">stackedbars</link> plots.
-These are the borders around the individual bars or bar segments in the plot.
+data borders on supported plot types.
+For plot types <link linkend="plottype-bars">bars</link> and
+<link linkend="plottype-stackedbars">stackedbars</link>,
+these are the borders around the individual bars or bar segments in the plot.
+For plot types
+<link linkend="plottype-area">area</link>,
+<link linkend="plottype-squaredarea">squaredarea</link>,
+<link linkend="plottype-stackedarea">stackedarea</link>, and
+<link linkend="plottype-stackedsquaredarea">stackedsquaredarea</link>,
+these are outlines of the filled areas.
     </para>
   </refsect1>
 
@@ -2317,20 +2353,97 @@ True to draw the data borders, False to not draw them.
   <refsect1>
     <title>Notes</title>
     <para>
-By default, data borders are drawn for unshaded plots, and not drawn for
-shaded plots. (By default, bar and stackedbar plots are shaded.
+By default, data borders are drawn for unshaded
+<literal>bars</literal> and <literal>stackedbars</literal> plots,
+and not drawn if shading is on.
+(By default, shading is on for these plot types.
 See <xref linkend="SetShading"/>.)
     </para>
     <para>
+By default, data borders are not drawn for
+<literal>area</literal>,
+<literal>squaredarea</literal>,
+<literal>stackedarea</literal>, or
+<literal>stackedsquaredarea</literal> plot types.
+    </para>
+    <para>
 Use <xref linkend="SetDataBorderColors"/> to set the border colors.
+    </para>
+    <para>
+For pie charts, see <xref linkend="SetDrawPieBorders"/>.
     </para>
   </refsect1>
   <refsect1>
     <title>History</title>
     <para>
+Starting with PHPlot-6.2.0, data borders are available with
+<literal>area</literal> and <literal>stackedarea</literal> plot types,
+and with the new
+<literal>squaredarea</literal> and <literal>stackedsquaredarea</literal>
+plot types.
+    </para>
+    <para>
 This function was added in PHPlot-6.0.0. In prior versions, borders were
 always drawn for unshaded bar and stacked bar plots, and never drawn for
 shaded plots.
+    </para>
+  </refsect1>
+</refentry>
+
+<refentry id="SetDrawLegendBorder">
+  <refmeta>
+    <refentrytitle>SetDrawLegendBorder</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>SetDrawLegendBorder</refname>
+    <refpurpose>Enable or disable drawing of the legend outline border</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv>
+    <synopsis>$plot-&gt;SetDrawLegendBorder(<parameter>$draw</parameter>)</synopsis>
+  </refsynopsisdiv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+<function>SetDrawLegendBorder</function> enables or disables drawing of the
+the legend outline border.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Parameters</title>
+    <variablelist>
+      <varlistentry>
+        <term><replaceable>$draw</replaceable></term>
+        <listitem>
+          <para>
+True to draw legend outline border, False to not draw it.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </refsect1>
+
+  <refsect1>
+    <title>Notes</title>
+    <para>
+See <xref linkend="conc-legend"/> for more on the plot legend.
+    </para>
+    <para>
+By default, the legend outline border is drawn.
+    </para>
+    <para>
+Use <xref linkend="SetLegendBorderColor"/> or <xref linkend="SetGridColor"/> to
+set the legend outline border color.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>History</title>
+    <para>
+This function was added in PHPlot-6.2.1 to provide a way to omit the legend
+outline border. In prior versions, the legend outline border was always drawn.
     </para>
   </refsect1>
 </refentry>
@@ -2532,7 +2645,7 @@ This function was added in PHPlot-5.3.0.
 
   <refnamediv>
     <refname>SetDrawXDataLabelLines</refname>
-    <refpurpose>Draw data lines</refpurpose>
+    <refpurpose>Draw data label lines for vertical plots</refpurpose>
   </refnamediv>
 
   <refsynopsisdiv>
@@ -2726,7 +2839,7 @@ This function was added in PHPlot-5.3.0.
 
   <refnamediv>
     <refname>SetDrawYDataLabelLines</refname>
-    <refpurpose>Draw data lines for horizontal plots</refpurpose>
+    <refpurpose>Draw data label lines for horizontal plots</refpurpose>
   </refnamediv>
 
   <refsynopsisdiv>
@@ -3680,7 +3793,7 @@ to allow mixing GD and TrueType fonts in the same graph.
 
   <refnamediv>
     <refname>SetGridColor</refname>
-    <refpurpose>Set the color used for the axes and borders</refpurpose>
+    <refpurpose>Set the color used for the axis lines and borders</refpurpose>
   </refnamediv>
 
   <refsynopsisdiv>
@@ -3691,9 +3804,9 @@ to allow mixing GD and TrueType fonts in the same graph.
     <title>Description</title>
     <para>
 <function>SetGridColor</function> sets the color used for the X and Y
-axes, the plot border, and the legend border.
-It also sets the default color for pie chart data labels and pie chart
-segment borders.
+axis lines and the plot area border.
+It also sets the default color for pie chart data labels, pie chart segment
+borders, and the legend border.
     </para>
   </refsect1>
 
@@ -3730,6 +3843,21 @@ The color used for pie chart segment borders is set with
 The color used for pie chart data labels is set with
 <xref linkend="SetPieLabelColor"/> (starting with PHPlot-5.7.0), with
 <function>SetGridColor</function> providing a default color.
+    </para>
+    <para>
+The color used for the legend border is set with
+<xref linkend="SetLegendBorderColor"/> (starting with PHPlot-6.2.1), with
+<function>SetGridColor</function> providing a default color.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>History</title>
+    <para>
+Although <function>SetGridColor</function> itself has not changed, the
+additional functions listed above have been added to set the color for
+certain plot elements, and these override any color set with
+<function>SetGridColor</function> for those elements. See the reference for
+those functions for the history of these changes.
     </para>
   </refsect1>
 </refentry>
@@ -4120,6 +4248,9 @@ Or, if not an array, the one line to be appended to the legend. See notes.
   <refsect1>
     <title>Notes</title>
     <para>
+See <xref linkend="conc-legend"/> for more on the plot legend.
+    </para>
+    <para>
 By default, no legend is displayed.
     </para>
     <para>
@@ -4131,8 +4262,9 @@ calls to SetLegend, supplying one line per call (in the same order as
 the data sets in the data array).
     </para>
     <para>
-Legend text lines are displayed in order from top to bottom in the legend.
-Each line has a color box or shape maker with the corresponding color from
+By default, legend text lines are displayed in order from top to bottom in
+the legend. (See <xref linkend="SetLegendReverse"/> to reverse the order.)
+Each line also has a color box or shape maker with the corresponding color from
 the data colors array.
 The colors used in the legend color boxes or shape markers are independent of
 any custom data color callback
@@ -4159,6 +4291,71 @@ markers in the legend.
     <para>
 Accepting NULL as a valid argument value was added in PHPlot-5.3.1.
 Through PHPlot-5.3.0, passing NULL would cause an error.
+    </para>
+  </refsect1>
+</refentry>
+
+
+<refentry id="SetLegendBorderColor">
+  <refmeta>
+    <refentrytitle>SetLegendBorderColor</refentrytitle>
+  </refmeta>
+
+  <refnamediv>
+    <refname>SetLegendBorderColor</refname>
+    <refpurpose>Set the legend outline border color</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv>
+    <synopsis>$plot-&gt;SetLegendBorderColor(<parameter>$color</parameter>)</synopsis>
+  </refsynopsisdiv>
+
+  <refsect1>
+    <title>Description</title>
+    <para>
+<function>SetLegendBorderColor</function> sets the color that is used to
+draw the rectangular outline border around the legend.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>Parameters</title>
+    <variablelist>
+      <varlistentry>
+        <term><replaceable>$color</replaceable></term>
+        <listitem>
+          <para>
+Color value to use.
+See <xref linkend="conc-colors" /> for more on color values.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </refsect1>
+
+  <refsect1>
+    <title>Notes</title>
+    <para>
+See <xref linkend="conc-legend"/> for more on the plot legend.
+    </para>
+    <para>
+If <function>SetLegendBorderColor</function> is not used, the legend outline
+border will be drawn using the color set with <xref linkend="SetGridColor"/>.
+If neither <function>SetLegendBorderColor</function> nor
+<function>SetGridColor</function> is used, the default color is black.
+    </para>
+    <para>
+Use <xref linkend="SetDrawLegendBorder"/><literal>(FALSE)</literal> if you
+do not want the legend to have an outline border.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>History</title>
+    <para>
+This function was added in PHPlot-6.2.1. In earlier releases, the legend
+outline border always used the color set with <xref linkend="SetGridColor"/>,
+which also sets the color of other elements.
     </para>
   </refsect1>
 </refentry>
@@ -4202,6 +4399,9 @@ See <xref linkend="conc-colors" /> for more on color values.
 
   <refsect1>
     <title>Notes</title>
+    <para>
+See <xref linkend="conc-legend"/> for more on the plot legend.
+    </para>
     <para>
 If <function>SetLegendBgColor</function> is not used, the legend background
 color will be the same as the image background color.
@@ -4360,6 +4560,9 @@ If the values are omitted or NULL, the default behavior is restored.
 
   <refsect1>
     <title>Notes</title>
+    <para>
+See <xref linkend="conc-legend"/> for more on the plot legend.
+    </para>
     <para>
 The default behavior is for PHPlot to position the legend in the
 upper right corner of the plot area.
@@ -4520,6 +4723,9 @@ plot, for example. If not specified, no offset is applied.
   <refsect1>
     <title>Notes</title>
     <para>
+See <xref linkend="conc-legend"/> for more on the plot legend.
+    </para>
+    <para>
 For examples of using <function>SetLegendPosition</function>, see
 <xref linkend="ex-legendpos"/>.
     </para>
@@ -4594,8 +4800,10 @@ No other legend positioning methods were available in earlier releases.
 <function>SetLegendReverse</function> is used to change the order of entries
 in the legend.
 A legend is drawn if <xref linkend="SetLegend" /> is used.
-The legend contains of a series of text strings, and optionally color boxes
-or shape markers, identifying the data sets (for example, plot lines).
+The legend consists of a series of text strings and color boxes or shape
+markers.
+The contents of the legend helps identify the different data sets in the
+plot (for example, the separate plot lines).
 The legend line identifying the first data set is normally drawn at the top
 of the legend, with the rest of the lines in order below it.
 <function>SetLegendReverse</function> can be used to reverse that order, so
@@ -4622,8 +4830,9 @@ default order (top down).
     <title>Notes</title>
     <para>
 The main use of this function is to set the legend line order for
-<link linkend="plottype-stackedbars">stackedbars</link> and
-<link linkend="plottype-stackedarea">stackedarea</link> plots.
+<link linkend="plottype-stackedarea">stackedarea</link>,
+<link linkend="plottype-stackedbars">stackedbars</link>, and
+<link linkend="plottype-stackedsquaredarea">stackedsquaredarea</link> plots.
 In these plot types, the first data set (bar segment or area section) is
 plotted along the the bottom of the plot, with subsequent data sets in
 order above it. By default, a legend for these plot types will correctly
@@ -4706,6 +4915,9 @@ If this parameter is omitted, the same alignment as $text_align is used.
 
   <refsect1>
     <title>Notes</title>
+    <para>
+See <xref linkend="conc-legend"/> for more on the plot legend.
+    </para>
     <para>
 By default, the color boxes or shape markers are lined up along the right side
 of the legend box, and the text strings are right-aligned just left of the
@@ -4978,6 +5190,9 @@ The units and origin are the same as the data you are plotting.
   <refsect1>
     <title>Notes</title>
     <para>
+See <xref linkend="conc-legend"/> for more on the plot legend.
+    </para>
+    <para>
 The default behavior is for PHPlot to position the legend in the
 upper right corner of the plot area.
     </para>
@@ -5021,7 +5236,7 @@ you supply are not scaled until the plot is drawn.
 
   <refnamediv>
     <refname>SetLightGridColor</refname>
-    <refpurpose>Set the color for grid lines and X data label lines</refpurpose>
+    <refpurpose>Set the color for grid lines and data label lines</refpurpose>
   </refnamediv>
 
   <refsynopsisdiv>
@@ -5033,8 +5248,10 @@ you supply are not scaled until the plot is drawn.
     <para>
 <function>SetLightGridColor</function> sets the color used for the X and Y
 grid lines.
-This color is also used for X Data Lines, if enabled with
-<xref linkend="SetDrawXDataLabelLines"/>.
+This color is also used for X data label lines, if enabled with
+<xref linkend="SetDrawXDataLabelLines"/>,
+and for Y data label lines, if enabled with
+<xref linkend="SetDrawYDataLabelLines"/>.
     </para>
   </refsect1>
 
@@ -5056,9 +5273,11 @@ See <xref linkend="conc-colors" /> for more on color values.
   <refsect1>
     <title>Notes</title>
     <para>
+The default color is gray.
+    </para>
+    <para>
 This function, not <xref linkend="SetGridColor" />, sets the color for the
 grid lines.
-The default color is gray.
     </para>
   </refsect1>
 </refentry>
@@ -6276,6 +6495,16 @@ To turn the labels off completely, use
 <literal>SetLabelScalePosition(False)</literal>.
     </para>
 
+    <para>
+<function>SetPieLabelType</function> also supports the use of two or three
+format strings with 'printf' formatting type, as described in
+<xref linkend="SetXLabelType"/> and
+<xref linkend="conc-labels-format-printf"/>.
+(The additional format strings are used for negative numbers, or zero.)
+But this feature is almost never useful with pie charts, where all pie slices
+have size greater than zero.
+    </para>
+
   </refsect1>
 
   <refsect1>
@@ -7027,8 +7256,10 @@ A string indicating the type of plot. The following types are available:
               <listitem><para>pie</para></listitem>
               <listitem><para>points</para></listitem>
               <listitem><para>squared</para></listitem>
+              <listitem><para>squaredarea</para></listitem>
               <listitem><para>stackedarea</para></listitem>
               <listitem><para>stackedbars</para></listitem>
+              <listitem><para>stackedsquaredarea</para></listitem>
               <listitem><para>thinbarline</para></listitem>
             </itemizedlist>
           </para>
@@ -7048,6 +7279,9 @@ A complete description of the available plot types can be found in
   </refsect1>
   <refsect1>
     <title>History</title>
+    <para>
+Plot types 'squaredarea' and 'stackedsquaredarea' were added in PHPlot-6.2.0.
+     </para>
     <para>
 Plot type 'boxes' was added in PHPlot-6.1.0.
      </para>
@@ -7555,9 +7789,15 @@ The default is to format numbers with 1 decimal position, but only
 if 'data' mode formatting is selected.
     </para>
     <para>
-This applies to both X data labels and X tick labels (only one of which
-should be enabled). Using 'data' format for X data labels only makes sense
+This function applies to both X tick labels and X data labels.
+(X data labels are axis data labels for vertical plots,
+or data value labels within the plot area for horizontal plots.
+See <xref linkend="conc-labels"/> for more on labels.)
+Using 'data' format for X axis data labels only makes sense
 when your data array contains numeric data in the label position.
+    </para>
+    <para>
+See <xref linkend="SetPrecisionY"/> for Y tick and data labels.
     </para>
   </refsect1>
   <refsect1>
@@ -7576,7 +7816,7 @@ is exactly the same as calling <code>SetXLabelType('data', $n)</code>.
 
   <refnamediv>
     <refname>SetPrecisionY</refname>
-    <refpurpose>Set precision for numeric formated Y tick labels</refpurpose>
+    <refpurpose>Set precision for numeric formated Y labels</refpurpose>
   </refnamediv>
 
   <refsynopsisdiv>
@@ -7624,8 +7864,22 @@ The default is to format numbers with 1 decimal position, but only
 if 'data' mode formatting is selected.
     </para>
     <para>
-This function applies to Y tick labels, and also to the Y data labels
-available with bar charts and stacked bar charts.
+This function applies to both Y tick labels and Y data labels.
+(Y data labels are data value labels within the plot area for vertical plots,
+or axis data labels for horizontal plots.
+See <xref linkend="conc-labels"/> for more on labels.)
+Using 'data' format for Y axis data labels only makes sense
+when your data array contains numeric data in the label position.
+    </para>
+    <para>
+See <xref linkend="SetPrecisionX"/> for X tick and data labels.
+    </para>
+    <para>
+This function also affects pie chart labels, for backward compatibility.
+When drawing a pie chart, if <xref linkend="SetPieLabelType"/> was not called,
+and <function>SetPrecisionY</function> was called, then the precision set
+with <function>SetPrecisionY</function> is used when formatting pie chart
+labels.
     </para>
   </refsect1>
   <refsect1>
@@ -8928,7 +9182,7 @@ This only applies to horizontal bar charts.
 Stacked bar charts are not allowed to have negative values.
     </para>
     <para>
-If X data lines are enabled with <xref linkend="SetDrawXDataLabelLines"/>,
+If X data label lines are enabled with <xref linkend="SetDrawXDataLabelLines"/>,
 then SetXDataLabelPos() also determines the direction of the lines which
 are drawn from the data points.
     </para>
@@ -9012,8 +9266,8 @@ format string specified as an additional argument to SetXDataLabelType.
     </para>
     <para>
 'printf' formatting formats the labels using the standard
-<function>sprintf</function> function, with the format string specified
-as an additional argument to SetXDataLabelType.
+<function>sprintf</function> function. One, two, or three format strings
+are specified as additional arguments to SetXDataLabelType.
     </para>
     <para>
 'custom' formatting formats the labels using a caller-provided function,
@@ -9092,17 +9346,42 @@ If omitted, the default is '%H:%M:%S' (hours, minutes, and seconds).
     </para>
 
     <para>
-For type 'printf', there is one optional argument:
+For type 'printf', there can be one, two, or three optional arguments:
       <variablelist>
         <varlistentry>
-          <term><replaceable>$format</replaceable></term>
+          <term><replaceable>$format1</replaceable>,
+              <optional><replaceable>$format2</replaceable>,
+                <optional><replaceable>$format3</replaceable>
+              </optional></optional>
+          </term>
           <listitem>
             <para>
-Formatting string, used with <function>sprintf()</function>.
-The formatting string must contain exactly one conversion specification
+Format string(s), used with <function>sprintf()</function>.
+The format string(s) must contain at most one conversion specification
 (%-code) which consumes a single argument.
-If omitted, the default value of '%e' uses scientific notation with default
-field sizes.
+If no format strings are specified, the default value of '%e' uses scientific
+notation with default field sizes.
+            </para>
+            <para>
+If a single format string is given (<literal>$format1</literal>),
+it is used for all label values.
+            </para>
+            <para>
+If two format strings are given (<literal>$format1, $format2</literal>),
+then the first string <literal>$format1</literal> is used to format the value
+of the label if it is greater than or equal to zero.
+The second string <literal>$format2</literal> is used to format
+the absolute value of the label if it is less than zero.
+            </para>
+            <para>
+If three format strings are given (<literal>$format1, $format2,
+$format3</literal>),
+then the first string <literal>$format1</literal> is used to format the value
+of the label if it is greater than zero.
+The second string <literal>$format2</literal> is used to format
+the absolute value of the label if it is less than zero.
+The third string <literal>$format3</literal> is used when the value of the
+label is zero.
             </para>
           </listitem>
         </varlistentry>
@@ -9166,6 +9445,15 @@ use SetXDataLabelType without arguments, or with an empty string argument.
 When using a custom label formatting function, do not assume the labels are
 formatted in any particular order, or only once each.
     </para>
+    <para>
+When using 2 or 3 'printf' format strings, the labels being formatted must
+be numeric values.
+    </para>
+    <para>
+When using 2 or 3 'printf' format strings, the second one is used to format
+the <emphasis>absolute value</emphasis> of the label, so you generally must
+provide some indication in the format string that the value is negative.
+    </para>
   </refsect1>
 
   <refsect1>
@@ -9177,6 +9465,10 @@ See <xref linkend="SetXLabelType" />.
 
   <refsect1>
     <title>History</title>
+    <para>
+The 'printf' label format type was extended to support 2 or 3 format strings
+in PHPlot-6.2.0. Before that release, only a single format string could be used.
+    </para>
     <para>
 Custom label formatting functions are passed the row and column arguments
 (if applicable) starting with PHPlot-5.8.0.
@@ -9287,8 +9579,8 @@ or using an additional argument to SetXLabelType.
     </para>
     <para>
 'printf' formatting formats the labels using the standard
-<function>sprintf</function> function, with the format string specified
-as an additional argument to SetXLabelType.
+<function>sprintf</function> function. One, two, or three format strings
+are specified as additional arguments to SetXLabelType.
     </para>
     <para>
 'custom' formatting formats the labels using a caller-provided function,
@@ -9357,7 +9649,7 @@ For type 'time', there is one optional argument:
           <term><replaceable>$format</replaceable></term>
           <listitem>
             <para>
-Formatting string, used with <function>strftime()</function>.
+Format string, used with <function>strftime()</function>.
 For example, '%Y-%m-%d' results in formatting a <literal>time_t</literal>
 value as a year, month, and day numbers.
 If omitted, the value set with <xref linkend="SetXTimeFormat" /> is used,
@@ -9370,17 +9662,42 @@ and seconds).
     </para>
 
     <para>
-For type 'printf', there is one optional argument:
+For type 'printf', there can be one, two, or three optional arguments:
       <variablelist>
         <varlistentry>
-          <term><replaceable>$format</replaceable></term>
+          <term><replaceable>$format1</replaceable>,
+              <optional><replaceable>$format2</replaceable>,
+                <optional><replaceable>$format3</replaceable>
+              </optional></optional>
+          </term>
           <listitem>
             <para>
-Formatting string, used with <function>sprintf()</function>.
-The formatting string must contain exactly one conversion specification
+Format string(s), used with <function>sprintf()</function>.
+The format string(s) must contain at most one conversion specification
 (%-code) which consumes a single argument.
-If omitted, the default value of '%e' uses scientific notation with default
-field sizes.
+If no format strings are specified, the default value of '%e' uses scientific
+notation with default field sizes.
+            </para>
+            <para>
+If a single format string is given (<literal>$format1</literal>),
+it is used for all label values.
+            </para>
+            <para>
+If two format strings are given (<literal>$format1, $format2</literal>),
+then the first string <literal>$format1</literal> is used to format the value
+of the label if it is greater than or equal to zero.
+The second string <literal>$format2</literal> is used to format
+the absolute value of the label if it is less than zero.
+            </para>
+            <para>
+If three format strings are given (<literal>$format1, $format2,
+$format3</literal>),
+then the first string <literal>$format1</literal> is used to format the value
+of the label if it is greater than zero.
+The second string <literal>$format2</literal> is used to format
+the absolute value of the label if it is less than zero.
+The third string <literal>$format3</literal> is used when the value of the
+label is zero.
             </para>
           </listitem>
         </varlistentry>
@@ -9443,23 +9760,33 @@ side effect on the format type.
 When using a custom label formatting function, do not assume the labels are
 formatted in any particular order, or only once each.
     </para>
+    <para>
+When using 2 or 3 'printf' format strings, the labels being formatted must
+be numeric values.
+    </para>
+    <para>
+When using 2 or 3 'printf' format strings, the second one is used to format
+the <emphasis>absolute value</emphasis> of the label, so you generally must
+provide some indication in the format string that the value is negative.
+    </para>
   </refsect1>
 
   <refsect1>
     <title>Examples</title>
     <para>
-The following table shows some label formatting examples.
+The following tables show some label formatting examples.
 These also apply to <function>SetXLabelType</function>,
 <xref linkend="SetXDataLabelType"/>, <xref linkend="SetYLabelType"/>,
 and <xref linkend="SetYDataLabelType"/>.
+    </para>
+
+    <para><?dbfo keep-together="always"?>
+Data (numeric) formatting with two digits of precision.
+Grouping and decimal separators depend on locale.
       <informaltable>
-<!-- This table's rows alternate a row spanning 3 columns with description,
-     then a 3 column row (Code, Value, Result).
-     This used to be a 4 column table, but was too wide for PDF pages.
--->
         <?dbfo table-width="100%"?>
         <tgroup cols="3">
-          <?dbhtml table-summary="Examples of label formatting"?>
+          <?dbhtml table-summary="Examples of label formatting, Part 1"?>
           <colspec colname="c1" colwidth="60*" />
           <colspec colname="c2" colwidth="20*" />
           <colspec colname="c3" colwidth="20*" />
@@ -9473,95 +9800,255 @@ and <xref linkend="SetYDataLabelType"/>.
 
           <tbody>
             <row>
-              <entry namest="c1" nameend="c3">
-Data (numeric) formatting with two digits of precision.
-Grouping and decimal separators depend on locale.
-              </entry>
-            </row>
-            <row>
-              <entry><programlisting><![CDATA[$plot->SetXLabelType('data', 2);
+              <entry morerows="1"><programlisting><![CDATA[$plot->SetXLabelType('data', 2);
 ]]></programlisting></entry>
               <entry>1234.56</entry>
               <entry>1,234.56</entry>
             </row>
+            <row> <!-- First cell is spanned by entry above -->
+              <entry>3.14159</entry>
+              <entry>3.14</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </para>
 
-            <row>
-              <entry namest="c1" nameend="c3">
+    <para><?dbfo keep-together="always"?>
 Data (numeric) formatting with prefix.
 &amp;#8364; is the entity code for the Euro sign in Unicode. (Numeric entity
 codes are handled by the GD library, but not named character entity codes.)
 Here we use it as a prefix, common usage for English.
 The Euro sign may appear differently in your browser. But when used with
 PHPlot it requires a Unicode font on the server.
-              </entry>
+      <informaltable>
+        <?dbfo table-width="100%"?>
+        <tgroup cols="3">
+          <?dbhtml table-summary="Examples of label formatting, Part 2"?>
+          <colspec colname="c1" colwidth="60*" />
+          <colspec colname="c2" colwidth="20*" />
+          <colspec colname="c3" colwidth="20*" />
+          <thead>
+            <row>
+              <entry>Code:</entry>
+              <entry>Value:</entry>
+              <entry>Result:</entry>
             </row>
+          </thead>
+
+          <tbody>
             <row>
               <entry><programlisting><![CDATA[$plot->SetXLabelType('data', 0, '&amp;#8364;');
 ]]></programlisting></entry>
-              <entry>100000</entry>
+              <entry>1000000</entry>
               <entry>&euro;1,000,000</entry>
             </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </para>
 
-            <row>
-              <entry namest="c1" nameend="c3">
+    <para><?dbfo keep-together="always"?>
 Data (numeric) formatting with suffix.
-Here we use the Euro as a suffix, common usage for French.
-Unlike the previous example, here we represent it as a 3 byte UTF-8
-sequence. You can use html_entity_decode() with UTF-8 as the character set
-to translate &amp;euro; into this sequence. (You cannot used named
-character entity codes in PHPlot strings that are processed by GD, as GD
-only handles UTF-8 sequences or numeric entity codes.)
-The thousands and decimal separator default to locale-dependent values,
-but here we set them ourselves with SetNumberFormat.
-The Euro sign may appear differently in your browser. But when used with
-PHPlot it requires a Unicode font on the server.
-              </entry>
-            </row>
+Here we use the Euro as a suffix, common usage for French, represented by a
+3 byte UTF code.
+You can use html_entity_decode() with UTF-8 as the character set
+to translate &amp;euro; into this sequence. 
+SetNumberFormat is used here to override the locale settings for
+thousands and decimal separators.
+      <informaltable>
+        <?dbfo table-width="100%"?>
+        <tgroup cols="3">
+          <?dbhtml table-summary="Examples of label formatting, Part 3"?>
+          <colspec colname="c1" colwidth="60*" />
+          <colspec colname="c2" colwidth="20*" />
+          <colspec colname="c3" colwidth="20*" />
+          <thead>
             <row>
-              <entry><programlisting><![CDATA[$plot->SetNumberFormat(',', '.');
+              <entry>Code:</entry>
+              <entry>Value:</entry>
+              <entry>Result:</entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry morerows="1"><programlisting><![CDATA[$plot->SetNumberFormat(',', '.');
 $plot->SetXLabelType('data', 2, '',
-                     '\xe2\x82\xac');
+                     "\xe2\x82\xac");
 ]]></programlisting></entry>
-              <entry>100000</entry>
+              <entry>1e6</entry>
               <entry>1.000.000,00&euro;</entry>
             </row>
+            <row> <!-- First cell is spanned by entry above -->
+              <entry>4321.123</entry>
+              <entry>4.321,123&euro;</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </para>
 
-            <row>
-              <entry namest="c1" nameend="c3">
+    <para><?dbfo keep-together="always"?>
 Date/time formatting.
 The given value is mktime(0,0,0,4,15,2008).
 The format string could be set with SetXTimeFormat instead.
-              </entry>
+      <informaltable>
+        <?dbfo table-width="100%"?>
+        <tgroup cols="3">
+          <?dbhtml table-summary="Examples of label formatting, Part 4"?>
+          <colspec colname="c1" colwidth="60*" />
+          <colspec colname="c2" colwidth="20*" />
+          <colspec colname="c3" colwidth="20*" />
+          <thead>
+            <row>
+              <entry>Code:</entry>
+              <entry>Value:</entry>
+              <entry>Result:</entry>
             </row>
+          </thead>
+
+          <tbody>
             <row>
               <entry><programlisting><![CDATA[$plot->SetXLabelType('time', '%m/%Y');
 ]]></programlisting></entry>
               <entry>1208232000</entry>
               <entry>04/2008</entry>
             </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </para>
 
-            <row>
-              <entry namest="c1" nameend="c3">
+    <para><?dbfo keep-together="always"?>
 Formatting using printf.
 Note PHP printf may differ from the standard C library. For example, PHP
 outputs only a one digit exponent here.
-              </entry>
+      <informaltable>
+        <?dbfo table-width="100%"?>
+        <tgroup cols="3">
+          <?dbhtml table-summary="Examples of label formatting, Part 5"?>
+          <colspec colname="c1" colwidth="60*" />
+          <colspec colname="c2" colwidth="20*" />
+          <colspec colname="c3" colwidth="20*" />
+          <thead>
+            <row>
+              <entry>Code:</entry>
+              <entry>Value:</entry>
+              <entry>Result:</entry>
             </row>
+          </thead>
+
+          <tbody>
             <row>
               <entry><programlisting><![CDATA[$plot->SetXLabelType('printf', '%8.2e');
 ]]></programlisting></entry>
               <entry>1234</entry>
-              <entry>1.23e+3</entry>
+              <entry>&nbsp;1.23e+3</entry>
             </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </para>
 
+    <para><?dbfo keep-together="always"?>
+When two format strings are used with printf formatting, the first is used
+for non-negative values, and the second for negative values (with the
+absolute value formatted).
+      <informaltable>
+        <?dbfo table-width="100%"?>
+        <tgroup cols="3">
+          <?dbhtml table-summary="Examples of label formatting, Part 6"?>
+          <colspec colname="c1" colwidth="60*" />
+          <colspec colname="c2" colwidth="20*" />
+          <colspec colname="c3" colwidth="20*" />
+          <thead>
             <row>
-              <entry namest="c1" nameend="c3">
-A custom formatting function is used to format values in decimal degrees as
-degrees, minutes, and seconds. (This only works for non-negative angles.)
-              </entry>
+              <entry>Code:</entry>
+              <entry>Value:</entry>
+              <entry>Result:</entry>
             </row>
+          </thead>
+
+          <tbody>
             <row>
-              <entry><programlisting><![CDATA[function deg_min_sec($value)
+              <entry morerows="1"><programlisting><![CDATA[$plot->SetXLabelType('printf', '%.2f', '(%.2f)');
+]]></programlisting></entry>
+              <entry>15.6</entry>
+              <entry>15.60</entry>
+            </row>
+            <row> <!-- First cell is spanned by entry above -->
+              <entry>-9.87</entry>
+              <entry>(9.87)</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </para>
+
+    <para><?dbfo keep-together="always"?>
+When three format strings are used with printf formatting, the first is used
+for positive values, the second for negative values (with the absolute value
+formatted), and the third for zero.
+You can suppress zero with an empty third format string.
+      <informaltable>
+        <?dbfo table-width="100%"?>
+        <tgroup cols="3">
+          <?dbhtml table-summary="Examples of label formatting, Part 7"?>
+          <colspec colname="c1" colwidth="60*" />
+          <colspec colname="c2" colwidth="20*" />
+          <colspec colname="c3" colwidth="20*" />
+          <thead>
+            <row>
+              <entry>Code:</entry>
+              <entry>Value:</entry>
+              <entry>Result:</entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry morerows="2"><programlisting><![CDATA[$plot->SetXLabelType('printf', 'GAIN:$%.2f',
+    'LOSS:($%.2f)', '[Unchanged]');
+]]></programlisting></entry>
+              <entry>9.1</entry>
+              <entry>GAIN:$9.10</entry>
+            </row>
+            <row> <!-- First cell is spanned by entry above -->
+              <entry>-26.35</entry>
+              <entry>LOSS:($26.35)</entry>
+            </row>
+            <row> <!-- First cell is spanned by entry above -->
+              <entry>0</entry>
+              <entry>[Unchanged]</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </para>
+
+    <para><?dbfo keep-together="always"?>
+In this example, a custom formatting function is used to format values in
+decimal degrees as degrees, minutes, and seconds.
+(This only works for non-negative angles.)
+      <informaltable>
+        <?dbfo table-width="100%"?>
+        <tgroup cols="3">
+          <?dbhtml table-summary="Examples of label formatting, Part 8"?>
+          <colspec colname="c1" colwidth="60*" />
+          <colspec colname="c2" colwidth="20*" />
+          <colspec colname="c3" colwidth="20*" />
+          <thead>
+            <row>
+              <entry>Code:</entry>
+              <entry>Value:</entry>
+              <entry>Result:</entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry morerows="2"><programlisting><![CDATA[function deg_min_sec($value)
 {
   $deg = (int)$value;
   $value = ($value - $deg) * 60;
@@ -9574,6 +10061,14 @@ $plot->SetXLabelType('custom', 'deg_min_sec');
               <entry>75.12345</entry>
               <entry>75d 7m 24s</entry>
             </row>
+            <row> <!-- First cell is spanned by entry above -->
+              <entry>0</entry>
+              <entry>0d 0m 0s</entry>
+            </row>
+            <row> <!-- First cell is spanned by entry above -->
+              <entry>136.5</entry>
+              <entry>136d 30m 0s</entry>
+            </row>
           </tbody>
         </tgroup>
       </informaltable>
@@ -9582,6 +10077,10 @@ $plot->SetXLabelType('custom', 'deg_min_sec');
   </refsect1>
   <refsect1>
     <title>History</title>
+    <para>
+The 'printf' label format type was extended to support 2 or 3 format strings
+in PHPlot-6.2.0. Before that release, only a single format string could be used.
+    </para>
     <para>
 Custom label formatting functions are passed the row and column arguments
 (if applicable) starting with PHPlot-5.8.0.
@@ -10677,7 +11176,7 @@ This only applies to vertical bar charts.
 Stacked bar charts are not allowed to have negative values.
     </para>
     <para>
-If Y data lines are enabled with <xref linkend="SetDrawYDataLabelLines"/>,
+If Y data label lines are enabled with <xref linkend="SetDrawYDataLabelLines"/>,
 then SetYDataLabelPos() also determines the direction of the lines which
 are drawn from the data points.
     </para>
@@ -10764,8 +11263,8 @@ format string specified as an additional argument to SetYDataLabelType.
     </para>
     <para>
 'printf' formatting formats the labels using the standard
-<function>sprintf</function> function, with the format string specified
-as an additional argument to SetYDataLabelType.
+<function>sprintf</function> function. One, two, or three format strings
+are specified as additional arguments to SetYDataLabelType.
     </para>
     <para>
 'custom' formatting formats the labels using a caller-provided function,
@@ -10844,17 +11343,42 @@ If omitted, the default is '%H:%M:%S' (hours, minutes, and seconds).
     </para>
 
     <para>
-For type 'printf', there is one optional argument:
+For type 'printf', there can be one, two, or three optional arguments:
       <variablelist>
         <varlistentry>
-          <term><replaceable>$format</replaceable></term>
+          <term><replaceable>$format1</replaceable>,
+              <optional><replaceable>$format2</replaceable>,
+                <optional><replaceable>$format3</replaceable>
+              </optional></optional>
+          </term>
           <listitem>
             <para>
-Formatting string, used with <function>sprintf()</function>.
-The formatting string must contain exactly one conversion specification
+Format string(s), used with <function>sprintf()</function>.
+The format string(s) must contain at most one conversion specification
 (%-code) which consumes a single argument.
-If omitted, the default value of '%e' uses scientific notation with default
-field sizes.
+If no format strings are specified, the default value of '%e' uses scientific
+notation with default field sizes.
+            </para>
+            <para>
+If a single format string is given (<literal>$format1</literal>),
+it is used for all label values.
+            </para>
+            <para>
+If two format strings are given (<literal>$format1, $format2</literal>),
+then the first string <literal>$format1</literal> is used to format the value
+of the label if it is greater than or equal to zero.
+The second string <literal>$format2</literal> is used to format
+the absolute value of the label if it is less than zero.
+            </para>
+            <para>
+If three format strings are given (<literal>$format1, $format2,
+$format3</literal>),
+then the first string <literal>$format1</literal> is used to format the value
+of the label if it is greater than zero.
+The second string <literal>$format2</literal> is used to format
+the absolute value of the label if it is less than zero.
+The third string <literal>$format3</literal> is used when the value of the
+label is zero.
             </para>
           </listitem>
         </varlistentry>
@@ -10918,6 +11442,15 @@ use SetYDataLabelType without arguments, or with an empty string argument.
 When using a custom label formatting function, do not assume the labels are
 formatted in any particular order, or only once each.
     </para>
+    <para>
+When using 2 or 3 'printf' format strings, the labels being formatted must
+be numeric values.
+    </para>
+    <para>
+When using 2 or 3 'printf' format strings, the second one is used to format
+the <emphasis>absolute value</emphasis> of the label, so you generally must
+provide some indication in the format string that the value is negative.
+    </para>
   </refsect1>
   <refsect1>
     <title>Examples</title>
@@ -10927,6 +11460,10 @@ See <xref linkend="SetXLabelType" />.
   </refsect1>
   <refsect1>
     <title>History</title>
+    <para>
+The 'printf' label format type was extended to support 2 or 3 format strings
+in PHPlot-6.2.0. Before that release, only a single format string could be used.
+    </para>
     <para>
 Custom label formatting functions are passed the row and column arguments
 (if applicable) starting with PHPlot-5.8.0.
@@ -11029,8 +11566,8 @@ or using an additional argument to SetYLabelType.
     </para>
     <para>
 'printf' formatting formats the labels using the standard
-<function>sprintf</function> function, with the format string specified
-as an additional argument to SetYLabelType.
+<function>sprintf</function> function. One, two, or three format strings
+are specified as additional arguments to SetYLabelType.
     </para>
     <para>
 'custom' formatting formats the labels using a caller-provided function,
@@ -11112,17 +11649,42 @@ and seconds).
     </para>
 
     <para>
-For type 'printf', there is one optional argument:
+For type 'printf', there can be one, two, or three optional arguments:
       <variablelist>
         <varlistentry>
-          <term><replaceable>$format</replaceable></term>
+          <term><replaceable>$format1</replaceable>,
+              <optional><replaceable>$format2</replaceable>,
+                <optional><replaceable>$format3</replaceable>
+              </optional></optional>
+          </term>
           <listitem>
             <para>
-Formatting string, used with <function>sprintf()</function>.
-The formatting string must contain exactly one conversion specification
+Format string(s), used with <function>sprintf()</function>.
+The format string(s) must contain at most one conversion specification
 (%-code) which consumes a single argument.
-If omitted, the default value of '%e' uses scientific notation with default
-field sizes.
+If no format strings are specified, the default value of '%e' uses scientific
+notation with default field sizes.
+            </para>
+            <para>
+If a single format string is given (<literal>$format1</literal>),
+it is used for all label values.
+            </para>
+            <para>
+If two format strings are given (<literal>$format1, $format2</literal>),
+then the first string <literal>$format1</literal> is used to format the value
+of the label if it is greater than or equal to zero.
+The second string <literal>$format2</literal> is used to format
+the absolute value of the label if it is less than zero.
+            </para>
+            <para>
+If three format strings are given (<literal>$format1, $format2,
+$format3</literal>),
+then the first string <literal>$format1</literal> is used to format the value
+of the label if it is greater than zero.
+The second string <literal>$format2</literal> is used to format
+the absolute value of the label if it is less than zero.
+The third string <literal>$format3</literal> is used when the value of the
+label is zero.
             </para>
           </listitem>
         </varlistentry>
@@ -11185,6 +11747,15 @@ side effect on the format type.
 When using a custom label formatting function, do not assume the labels are
 formatted in any particular order, or only once each.
     </para>
+    <para>
+When using 2 or 3 'printf' format strings, the labels being formatted must
+be numeric values.
+    </para>
+    <para>
+When using 2 or 3 'printf' format strings, the second one is used to format
+the <emphasis>absolute value</emphasis> of the label, so you generally must
+provide some indication in the format string that the value is negative.
+    </para>
   </refsect1>
   <refsect1>
     <title>Examples</title>
@@ -11194,6 +11765,10 @@ See <xref linkend="SetXLabelType" />.
   </refsect1>
   <refsect1>
     <title>History</title>
+    <para>
+The 'printf' label format type was extended to support 2 or 3 format strings
+in PHPlot-6.2.0. Before that release, only a single format string could be used.
+    </para>
     <para>
 Custom label formatting functions are passed the row and column arguments
 (if applicable) starting with PHPlot-5.8.0.

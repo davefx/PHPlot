@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: u.setcolors.php 1376 2012-08-15 02:09:16Z lbayuk $
 # PHPlot Unit test for SetDataColors, SetErrorBarColors, SetDataBorderColors
 /* Specification:
 

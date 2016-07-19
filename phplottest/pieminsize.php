@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: pieminsize.php 1039 2011-12-30 16:59:31Z lbayuk $
 # PHPlot test - Pie Chart minimum size cut-off - baseline
 # This is a parameterized test. Other scripts can set the parameters below
 # and then include this script.

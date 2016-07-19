@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: drawmessage4.php 1155 2012-02-06 16:52:04Z lbayuk $
 # PHPlot Test: DrawMessage() message image, case 4
 # This is a parameterized test. See the script named at the bottom for details.
 $options = array(

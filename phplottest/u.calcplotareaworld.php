@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: u.calcplotareaworld.php 1556 2013-03-27 00:25:01Z lbayuk $
 # Unit test for CalcPlotAreaWorld()
 # This tries a variety of ranges and does some simple checks on the results.
 require_once 'phplot.php';

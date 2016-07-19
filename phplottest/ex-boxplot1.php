@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: ex-boxplot1.php 1615 2013-04-23 22:15:07Z lbayuk $
 # PHPlot Example - Box Plot (without outliers)
 require_once 'phplot.php';
 

@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: multidefault-axis1.php 1385 2012-08-21 00:08:50Z lbayuk $
 # Testing PHPlot - Multi-plot with axis change - case 1
 # Axis is calculated for first plot and becomes default for second plot.
 # (This is documented behavior)

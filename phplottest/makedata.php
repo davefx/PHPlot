@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: makedata.php 1232 2012-03-24 16:55:54Z lbayuk $
 # PHPlot Test Suite Support - create a valid data array
 /*
    make_data_array():

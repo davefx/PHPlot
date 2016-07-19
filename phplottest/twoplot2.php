@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: twoplot2.php 1001 2011-08-08 02:22:55Z lbayuk $
 # PHPlot test: Two plots on image with auto-scaling
 require_once 'phplot.php';
 

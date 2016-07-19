@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: stream1.php 1251 2012-04-02 02:02:32Z lbayuk $
 # PHPlot Test - streaming plots, extract image from first frame
 # This produces a single-frame "stream", extracts the image part, and
 # writes it to stdout - as if producing a single plot.

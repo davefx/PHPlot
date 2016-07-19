@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: piesize2e.php 1052 2011-12-30 17:00:46Z lbayuk $
 # PHPlot test - Pie Chart Sizing and Label Variations - label scale position (e)
 # This is a parameterized test. See the script named at the bottom for details.
 $tp = array(

@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: piesize.php 1781 2015-11-04 01:57:59Z lbayuk $
 # PHPlot test - Pie Chart Sizing and Label Variations - baseline
 require_once 'config.php'; // Configure fonts
 # This is a parameterized test. Other scripts can set $tp and then include
@@ -23,6 +23,7 @@ $tp = array_merge(array(
         ), $tp);
 require_once 'phplot.php';
 
+$font = $phplot_test_ttfdir . $phplot_test_ttfonts['sans'];
 
 // Recursively expand an array of values and arrays into a readable string.
 function show_arrays($arr)
@@ -110,9 +111,9 @@ if (!empty($plot_margins))
 # Font setup
 if (!empty($ttfonts)) {
   if (isset($font_size))
-      $plot->SetFontTTF('generic', $phplot_test_ttfonts['sans'], $font_size);
+      $plot->SetFontTTF('generic', $font, $font_size);
   else
-      $plot->SetFontTTF('generic', $phplot_test_ttfonts['sans']);
+      $plot->SetFontTTF('generic', $font);
 } elseif (isset($font_size)) {
       $plot->SetFontGD('generic', $font_size);
 }

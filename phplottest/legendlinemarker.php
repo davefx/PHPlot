@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: legendlinemarker.php 1442 2012-12-24 02:44:50Z lbayuk $
 # PHPlot test: Legend with line markers, baseline case
 # This is a parameterized test. Other scripts can set $tp and then include
 # this script. The parameters are shown in the defaults array below:

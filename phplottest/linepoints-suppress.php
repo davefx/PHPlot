@@ -1,7 +1,7 @@
 <?php
 # Testing phplot - Line-Points, extensions to suppress either
 # the line or the points on each plot.
-# $Id$
+# $Id: linepoints-suppress.php 1001 2011-08-08 02:22:55Z lbayuk $
 require_once 'phplot.php';
 
 $data = array(

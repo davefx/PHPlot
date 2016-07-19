@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: ex-pielabeltypedata.php 1117 2012-01-02 18:07:05Z lbayuk $
 # PHPlot Example: Pie Chart Label Types - Data array
 # This is used by several examples. The data is 'altered' for appearance.
 $title = 'Energy Production By Source, 2005';

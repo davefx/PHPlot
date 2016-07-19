@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: ex-drawmessage.php 1162 2012-02-17 16:06:06Z lbayuk $
 # PHPlot Example: Use DrawMessage() to display a message
 require_once 'phplot.php';
 require_once 'config.php'; // Font info

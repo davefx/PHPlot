@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: legend_ttf-5.php 1001 2011-08-08 02:22:55Z lbayuk $
 # SetLegendStyle - TrueTrype, increased line spacing
 $tp = array(
   'suffix' => ' (TrueType, extra line spacing)',   # Title part 2

@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: legshape2.php 1460 2012-12-24 17:08:41Z lbayuk $
 # Legend shape marker tests - case 2
 # This is a parameterized test. See the script named at the bottom for details.
 $tp = array(

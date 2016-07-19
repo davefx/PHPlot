@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: tc-points.php 1001 2011-08-08 02:22:55Z lbayuk $
 # PHPlot test: Truecolor points plot, big overlapped dots
 require_once 'phplot.php';
 mt_srand(0);

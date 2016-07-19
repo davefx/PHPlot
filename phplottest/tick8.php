@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: tick8.php 1001 2011-08-08 02:22:55Z lbayuk $
 # PHPlot Test - Ticks, Lengths and Labels - data labels, 2 sides
 # This is a parameterized test. See the script named at the bottom for details.
 $tp = array(

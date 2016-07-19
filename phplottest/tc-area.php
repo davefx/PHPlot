@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: tc-area.php 1001 2011-08-08 02:22:55Z lbayuk $
 # PHPlot test: Truecolor area plot, alpha gradient
 require_once 'phplot.php';
 

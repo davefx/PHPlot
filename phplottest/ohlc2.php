@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: ohlc2.php 1001 2011-08-08 02:22:55Z lbayuk $
 # Testing phplot - OHLC - all up/down combos - candlesticks
 if (empty($plot_type)) $plot_type = 'candlesticks';
 require_once 'phplot.php';

@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: xrange0.php 1001 2011-08-08 02:22:55Z lbayuk $
 # Null X range error case
 # From forum post on scatter plot with all same X value, 3/27/2008
 require_once 'phplot.php';

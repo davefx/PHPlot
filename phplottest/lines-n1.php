@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: lines-n1.php 1001 2011-08-08 02:22:55Z lbayuk $
 # Testing phplot - "N" Lines with parameters - 1
 # This is a parameterized test. See the script named at the bottom for details.
 $tp = array(

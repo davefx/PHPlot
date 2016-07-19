@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: tc-lines.php 1001 2011-08-08 02:22:55Z lbayuk $
 # PHPlot test: Truecolor Lines plot with controllable parameters
 
 # This is a parameterized test. Other scripts can set $tp and then include

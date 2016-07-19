@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: imagemap_unit-pi-tds.php 1691 2015-08-30 00:59:20Z lbayuk $
 # PHPlot Unit test: Image map with pie chart, baseline text-data-single case
 # This generates (and discards) a plot, and checks the image map data.
 # For pie charts, it just checks the number of points and syntax. It
@@ -16,7 +16,7 @@ $test_verbose = False;
 # ===========
 
 # Capture the points which would be generated for the image map:
-function store_map($im, $unused, $shape, $segment, $unused,
+function store_map($im, $unused1, $shape, $segment, $unused2,
                    $xc, $yc, $wd, $ht, $start_angle, $end_angle)
 {
   global $points;

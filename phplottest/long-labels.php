@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: long-labels.php 1001 2011-08-08 02:22:55Z lbayuk $
 # X label size and angle test - baseline
 # Bug report 945439 - "x_tick_label_height not set correctly"
 # 2006-11-16

@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: ex-horizerror.php 1594 2013-04-16 23:18:42Z lbayuk $
 # PHPlot Example - Horizontal Error Plot
 require_once 'phplot.php';
 

@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: transparent-reset.php 1626 2013-05-08 02:17:28Z lbayuk $
 # PHPlot test: Reset transparent color (fixed at 6.0.0), case 0
 # Set $case to 1 and include this script to reset the transparent color.
 require_once 'phplot.php';

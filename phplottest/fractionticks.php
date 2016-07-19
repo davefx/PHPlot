@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: fractionticks.php 1557 2013-03-27 00:25:37Z lbayuk $
 # PHPlot test: Fractional tick labels
 # This uses binary auto-tick mode on the Y axis, with a small Y range,
 # and a custom label formatting function to display the labels as

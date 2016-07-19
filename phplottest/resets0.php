@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: resets0.php 1001 2011-08-08 02:22:55Z lbayuk $
 # Testing: Image border reset to none, label format reset to default, baseline.
 # This runs stand-alone, or called with $test_resets=True to test
 # resetting attributes.

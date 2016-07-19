@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: legend_--.php 1001 2011-08-08 02:22:55Z lbayuk $
 # PHPlot test: Legend tests, including SetLegendStyle() - Baseline - 1
 # This uses config.php to identify TrueType font locations and names.
 require_once 'config.php';

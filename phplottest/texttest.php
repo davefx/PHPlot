@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: texttest.php 1001 2011-08-08 02:22:55Z lbayuk $
 # Testing phplot - All kinds of text
 if (!isset($tp)) $tp = array();
 $tp = array_merge(array(
