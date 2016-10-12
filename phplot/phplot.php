@@ -35,7 +35,7 @@
 
 class PHPlot
 {
-    const version = '6.1.0';
+    const version = '6.1.0-patch2';
     const version_id = 60100;
 
     // All class variables are declared here, and initialized (if applicable).
