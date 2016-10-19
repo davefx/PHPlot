@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: range-auto7date3.php 1563 2013-04-01 20:06:37Z lbayuk $
 # PHPlot test: Plot auto-range test
 # This is a parameterized test. See the script named at the bottom for details.
 $tp = array(

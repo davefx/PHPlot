@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: datalabellines.php 1216 2012-03-19 20:34:13Z lbayuk $
 # Testing PHPlot: Data Label Lines
 # This is a parameterized test. Other scripts can set $tp and then include
 # this script. The parameters are shown in the defaults array below:

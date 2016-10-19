@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: ex-xtickanchor.php 1001 2011-08-08 02:22:55Z lbayuk $
 # PHPlot Example: Using an X tick anchor to control grid lines
 # This example is based on a question on the PHPlot forum on 5/8/2011.
 # It requires PHPlot >= 5.4.0

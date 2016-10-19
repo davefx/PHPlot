@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: error-pre-img.php 1001 2011-08-08 02:22:55Z lbayuk $
 # PHPlot error test - fail before image creation.
 require_once 'phplot.php';
 

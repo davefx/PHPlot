@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: horzerrplt.php 1588 2013-04-15 00:56:16Z lbayuk $
 # PHPlot test: Horizontal error plots with style controls
 # This is a parameterized test. Other scripts can set $tp and then include
 # this script. The parameters are shown in the defaults array below:

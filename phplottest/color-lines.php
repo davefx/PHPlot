@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: color-lines.php 1001 2011-08-08 02:22:55Z lbayuk $
 # Testing phplot - All line colors
 require_once 'phplot.php';
 

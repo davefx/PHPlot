@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: labelcolor.php 1171 2012-02-19 01:31:53Z lbayuk $
 # PHPlot test: label (tick, axis data, data value) color variations - baseline
 # For post-5.6.0 with new controls to separately change colors for these.
 # This is a parameterized test. Other scripts can set $colors and then include

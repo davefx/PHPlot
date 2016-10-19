@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: pieminautosize.php 1037 2011-12-30 16:59:22Z lbayuk $
 # PHPlot test - Pie Chart minimum size vs autosize
 # The idea is that setting pie_min_size_factor=1 should be the
 # same as turning off autosize.

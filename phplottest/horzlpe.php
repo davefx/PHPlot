@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: horzlpe.php 1482 2012-12-29 22:48:13Z lbayuk $
 # Testing PHPlot - Horizontal lines/points/linepoints+error plots - master
 # This tests new horizontal lines, points, and linepoints plots, added at
 # PHPlot-6.0.0. Because the lines/points/linepoints and error plot variations

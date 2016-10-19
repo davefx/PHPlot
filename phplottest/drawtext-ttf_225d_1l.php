@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: drawtext-ttf_225d_1l.php 1001 2011-08-08 02:22:55Z lbayuk $
 # Unit test: PHPlot DrawText function - TrueType at 225 degrees, 1 line
 # This is a parameterized test. See the script named at the bottom for details.
 $tp = array(

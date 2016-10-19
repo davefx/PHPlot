@@ -2,6 +2,113 @@ This is the Change Log for phplottest, the PHPlot Test Suite
 The project home page is http://sourceforge.net/projects/phplot/
 -----------------------------------------------------------------------------
 
+2016-01-01
+    New tests for Feature Request #59, legend border color/disable control:
+    * legendborder*.php: Added 7 new tests.
+    * tests.ini: List 7 new tests.
+
+2015-11-03
+    Fixes needed to complete PHPlot-6.2.0 release testing:
+    * config.php: Fix for Ubuntu, font path has changed (no more ttf- prefix).
+      This caused a large number of tests using TTF to fail on Ubuntu.
+    * u.defaultfont.php: Use the test class PHPlot_test2 that also prevents
+      error images from being drawn, which was making it hard to diagnose
+      other font problems.
+    * compare_tests.php : Add a "second try" file comparison function. If
+      image files do not match byte-for-byte, try converting them to PNM and
+      then compare the results. This cleared up about 900 image differ
+      reports on Ubuntu, apparently because on Ubuntu some meta-data is
+      being added to the images (resolution?) and this caused the byte-by-byte
+      compares to fail even if the images are identical.
+    * piesize.php: Use full path for TrueType font file. (Otherwise this fails
+      with some PHP configurations. Font without path is tested elsewhere.)
+    * ex-pieangle.php: Set the path for TrueType font files, to prevent
+      test failures on some PHP configurations (thread safety enabled).
+
+2015-10-31
+    New tests for data borders with area fill plot types:
+    * areaborders??.php: 24 new tests
+    * tests.ini: List 24 new tests.
+
+2015-10-28
+    * ex-squaredarea1.php, ex-stackedsquaredarea1.php: style changes for
+      inclusion in the reference manual.
+
+2015-10-25
+    New tests for 'squaredarea' and 'stackedsquaredarea' plot types:
+    * squarea*.php: 22 new tests for new plot types.  (Note: 'squarea' is
+      short for 'squared area' and is only used in the test filenames.)
+    * tc-squaredarea.php: New test for squaredarea plot with transparency and
+      area overlap.
+    * tc-area2.php: New test for area plot with transparency. This is the
+      same as tc-squaredarea.php except for the plot type and title, and
+      allows for comparing these two plot types with the same data.
+    * ex-squaredarea1.php, ex-stackedsquaredarea1.php: New, examples which
+      will be in the reference manual.
+
+    Updated tests for new 'squaredarea' and 'stackedsquaredarea' plot types:
+    * matchtypes.php: Expanded the test to cover these 2 new plot types, and
+      also horizontal bars vs stackedbars.
+      Added option to save the plots to files, for debugging.
+    * u.ptdt.php: Add new plot types to plot type/data type matrix.
+    * u.baddata.php: Added 12 cases for new types + 2 cases for existing.
+    * empty-nocols-sqa.php, empty-nocols-ssq.php: New cases of empty-nocols.
+    * empty-plot-sqa.php, empty-plot-ssq.php: New cases of empty-plot.
+
+    * tests.ini: List 30 new tests.
+    * empty-nocols-sq.php: Fix typo
+
+2015-10-23
+    Expanded and renamed unit test of label format types.
+    * fmtlab-printf3.php: Renamed to u.formattype.php
+    * u.formattype.php: Renamed from fmtlab-printf3.php. Extended to test
+      more format types, and added all examples from the reference manual
+      SetXLabelType page. (Several of these turned out to be wrong.)
+    * tests.ini: Renamed 1 test.
+    
+2015-10-22
+    New tests for multi-format printf in label formatting (FR#56).
+    * labelformats[789].php: New tests for 1, 2, and 3 format strings.
+    * fmtlab-printf3.php: New unit test.
+    * tests.ini: List 4 new tests.
+
+2015-10-16
+    A pair of new tests that came out of taking a closer look at area fill
+    plot types.
+    * area2.php: New test, area plot fill overlaps with transparency.
+    * matchtypes.php: New test checks that area and stackedarea (also bars
+      and stackedbars) make the same plot when there is a single data set.
+    * tests.ini: List 2 new tests.
+    * README: fixed a missing parenthesis in a code sample.
+
+2015-08-31
+    * labelprec*.php: 4 new (actually from 2013) tests for label precision.
+    * tests.ini: List 4 new tests.
+    * run_test.php: Fix format in summary.
+    * compare_tests.php: Check for and report removed tests, clean up output.
+
+2015-08-29
+    Fixes needed for PHP-7.0 (not yet released):
+    * callback2.php: Class name as constructor raises DEPRECATED warning.
+      Fixed when calling parent constructor too.
+    * imagemap_unit-pi-tds.php: Fixed duplicate parameter $unused.
+
+2015-03-20
+    * testversion.php: Fix for fix made 2013-11-13 below to accept phpdoc tag
+      for version. Despite a comment saying it checked the top 25 lines of
+      the file, it only checked 10, which wasn't enough.
+
+2013-11-13
+    * missing.php: Add support to this test for horizontal plots, which
+      were not being tested for missing point behavior.
+    * missingh*.php: 10 new tests for missing points in horizontal plots.
+    * tests.ini: List 10 new tests.
+
+    * testversion.php: Fix to also work with under-development PHPlot which
+      uses phpdoc comments. (This test checks the source code for a version
+      string in a comment; the new code uses a phpdoc tag for that. The
+      test now works with both.)
+
 2013-05-10
     * compare_tests.php: Updated this utility script which compares test
       results against a baseline. Added text file compare, -q option for

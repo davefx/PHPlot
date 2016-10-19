@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: stackedbarlabel7.php 1001 2011-08-08 02:22:55Z lbayuk $
 # Test: stackedbars with labels, TTF with angle and format
 # This is a parameterized test. See the script named at the bottom for details.
 $tp = array(

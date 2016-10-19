@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: imagemap_trace-pi.php 1189 2012-02-21 21:00:25Z lbayuk $
 # PHPlot test: Pie chart, with image map areas marked
 # This produces a plot image with the areas that would be in an image map
 # outlined. It does not produce HTML or an image map.

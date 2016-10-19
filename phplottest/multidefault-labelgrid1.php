@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: multidefault-labelgrid1.php 1385 2012-08-21 00:08:50Z lbayuk $
 # Testing PHPlot - Multi-plot (horizontal, vertical) - label and grid issues
 # This shows an issue with label position parameters being calculated and
 # stored back for the first plot, then seen as user settings for the second.

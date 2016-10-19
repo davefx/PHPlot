@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: dlexformat.php 1415 2012-09-18 21:06:00Z lbayuk $
 # PHPlot test: Data label extended custom formatting - base
 # This tests custom label formatting for axis data labels and data value
 # labels, with access to the row and column (if applicable) of the label.

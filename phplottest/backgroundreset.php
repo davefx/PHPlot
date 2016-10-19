@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: backgroundreset.php 1131 2012-01-10 03:32:23Z lbayuk $
 # PHPlot test: Background image reset, baseline (case 0)
 # There are 4 cases: reset or not to reset image and plot area background.
 # These parameters control the cases. They can be set in a calling script:

@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: multipie.php 1030 2011-12-30 16:58:51Z lbayuk $
 # PHPlot test - Multiple Pie Charts, with label and other variations
 require_once 'phplot.php';
 

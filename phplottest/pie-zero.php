@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: pie-zero.php 1001 2011-08-08 02:22:55Z lbayuk $
 # PHPlot test: Bug 1827263, spoiled chart if close to zero - case 1
 require_once 'phplot.php';
 

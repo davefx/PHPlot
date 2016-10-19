@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: error-SetPlotAreaWorld.php 1355 2012-07-27 21:38:06Z lbayuk $
 # Testing PHPlot - Bad data range with SetPlotAreaWorld - baseline/master
 # Other scripts set $spaw and $subtitle and then include this script.
 require 'phplot.php';

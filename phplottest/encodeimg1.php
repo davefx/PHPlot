@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: encodeimg1.php 1007 2011-08-20 00:12:03Z lbayuk $
 # PHPlot test: Data URL (RFC2397)
 # Note: To test Data URL right, you need to make an HTML file and then view
 # it in a browser. But that doesn't fit well with the way the PHPlot Test Suite 

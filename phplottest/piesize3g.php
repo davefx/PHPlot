@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: piesize3g.php 1060 2011-12-30 17:01:27Z lbayuk $
 # PHPlot test - Pie Chart Sizing and Label Variations - Pie/image size (g)
 # This is a parameterized test. See the script named at the bottom for details.
 $tp = array(

@@ -1,4 +1,4 @@
-<!-- $Id$
+<!-- $Id: advanced.xml 1769 2015-11-02 23:19:30Z lbayuk $
      PHPlot Advanced Programming Topics
      Note: The "callbacks" section used to be its own chapter. Other material
      was moved from the "concepts" chapter. The IDs (for cross-references) for
@@ -779,6 +779,15 @@ Some callbacks are expected to return a value. This is documented in
 from a callback function is ignored.
 (Callbacks which return a value were implemented in PHPlot-5.1.3.)
 </para>
+
+<note>
+  <para>
+Instead of using the name of a function in <function>SetCallback</function>,
+you can use a PHP anonymous function.
+See the example in <xref linkend="adv-datacolor-callback-custom" />.
+  </para>
+</note>
+
 </sect2>
 
 <sect2 id="callbacks-access">
@@ -804,10 +813,8 @@ You can declare your PHPlot class instance variable as
     <listitem>
       <para>
 You can pass the instance variable as the $arg when registering the
-callback. With PHP5, this will pass a reference to the object, which allows
-reading and changing variables. (PHP4 would pass a copy of the object at the
-time the callback function is being set up, which would probably not be
-useful. There are work-arounds, but PHP4 is no longer supported.)
+callback. With PHP5 and above, this will pass a reference to the object,
+which allows reading and changing variables.
       </para>
     </listitem>
     <listitem>
@@ -993,9 +1000,9 @@ Consider the following setup:
 <para>
   <programlisting><![CDATA[class my_PHPlot extends PHPlot
 {
-  function my_PHPlot($width=600, $height=400, $outfile=NULL, $infile=NULL)
+  function __construct($width=600, $height=400, $outfile=NULL, $infile=NULL)
   {
-    $this->PHPlot($width, $height, $outfile, $infile);
+    parent::__construct($width, $height, $outfile, $infile);
   }
 
   function callback($img, $arg)
@@ -1011,8 +1018,22 @@ Consider the following setup:
 <para>
 We define a class which extends PHPlot, and a method 'callback' which
 displays the plot area using the internal PHPlot class variable plot_area.
-(Note we are using a PHP4-style constructor, which also works with PHP5.
-You can use the PHP5 constructor method instead.)
+  <note>
+    <para>
+PHPlot version 6.1.0 and earlier used the class name as the constructor
+method name, as required in PHP4.  This was deprecated in PHP7.
+Earlier versions of this reference manual used
+<literal>$this->PHPlot(...)</literal> to call the parent constructor.
+This will not work with PHPlot after version 6.1.0 when the constructor
+name was changed for PHP7.
+    </para>
+    <para>
+Using <literal>__construct()</literal> in the extended class as shown
+above - for both the extended class constructor and when calling the
+base class constructor - will work in PHP5 and PHP7, and with PHPlot
+versions before and after the constructor name change.
+    </para>
+  </note>
 </para>
 
 <para>
@@ -1020,8 +1041,6 @@ We will then create an instance of the extended class, and set a callback.
   <programlisting><![CDATA[$plot = new my_PHPlot(400,300);
 $plot->SetCallback('draw_titles', array($plot, 'callback'));
 ]]></programlisting>
-This is for PHP5. For PHP4, you need to use a reference to the $plot instance.
-Note that PHP4 is no longer supported.
 </para>
 
 <para>
@@ -1305,8 +1324,8 @@ colors in the data colors array are SkyBlue, green, and orange.
 <para>
 There are two other color arrays: the error bar colors and data border
 colors. Error bar colors are used in error plots to indicate the positive
-and negative error range, and data border colors are used to outline bars
-in bar charts when 3D shading is off.
+and negative error range, and data border colors are used to draw borders
+around areas representing the data for some plot types (such as bars).
 The same index (but not necessarily the same color) is used to
 select the color for any of the three elements which are used in a plot.
 For example, the first data set in a points plot with error bars will use
@@ -1361,9 +1380,12 @@ A bar chart where the bar color depends on the value of that data point.
 <note>
   <para>
 Custom data color selection is not available for plot types
-<literal>pie</literal>, <literal>area</literal>, or
-<literal>stackedarea</literal>.
-These three plot types already provide full control over the data color
+<literal>area</literal>,
+<literal>pie</literal>,
+<literal>squaredarea</literal>,
+<literal>stackedarea</literal>, or
+<literal>stackedsquaredarea</literal>.
+These plot types already provide full control over the data color
 selection, with no need for the callback function,
 because each color in the color array is only used once.
   </para>
@@ -1450,6 +1472,24 @@ method can be used here instead - see <xref linkend="callbacks-objects"/>.
 The third argument is an optional pass-through value that will be sent to
 your callback function each time it is called.
 </para>
+
+<para>
+You can also use a PHP anonymous function as a data color callback (or as
+any callback). This is recommended only when the color selection code is
+relatively short. Here is an example of using an anonymous function as a
+data color callback. This uses color 1 (green) or 4 (red) based on the
+value of a bar chart value (<literal>text-data</literal> data type).
+Note the <literal>use</literal> clause is used by the anonymous function to
+access the data array <literal>$data</literal>.
+<programlisting><![CDATA[$plot->SetCallback('data_color',
+   function($img, $passthru, $row, $col) use($data) {
+       if ($data[$row][$col + 1] >= 50) return 1;
+       return 4;
+   }
+);
+]]></programlisting>
+</para>
+
 </sect2>
 
 <sect2 id="adv-datacolor-callback-legend">
@@ -3799,7 +3839,7 @@ expensive features:
       <para>
 Plots that use area fills are slower. This especially includes pie charts
 with shading (because PHPlot redraws the filled pie segments for each
-level of shading). Area and stackedarea plots have a lot of area fill.
+level of shading). Area plots and similar types have a lot of area fill.
 Bar charts have some area fill, with shaded bar charts having more shading
 (but not nearly as much as shaded pie charts).
 The fastest plot types are line plots.
@@ -4028,9 +4068,16 @@ types:
       </para>
     </listitem>
   </itemizedlist>
-No other plot type is supported. This includes lines, squared, thinbarline,
-area, and stackedarea. (These plot types do not have well-defined areas
-which could map to data points.)
+No other plot type is supported. This includes
+<literal>lines</literal>,
+<literal>squared</literal>, and
+<literal>thinbarline</literal>,
+which do not have well-defined areas which could map to data points, and
+<literal>area</literal>,
+<literal>squaredarea</literal>,
+<literal>stackedarea</literal>, and
+<literal>stackedsquaredarea</literal>
+for which this feature has not been implemented.
 </para>
 
 <para>

@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: piesize8d.php 1093 2011-12-30 17:03:58Z lbayuk $
 # PHPlot test - Pie Chart Sizing and Label Variations - Unsupported data labels
 # This is a parameterized test. See the script named at the bottom for details.
 $tp = array(

@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: legendcolorboxborder.php 1481 2012-12-29 22:48:08Z lbayuk $
 # PHPlot test: Legend Colorbox Borders (PHPlot >= 6.0.0) - master
 # This is a parameterized test. Other scripts can set $tp and then include
 # this script. The parameters are shown in the defaults array below:

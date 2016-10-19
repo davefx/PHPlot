@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: stackedarea1.php 1001 2011-08-08 02:22:55Z lbayuk $
 # Test: Stacked area
 require_once 'phplot.php';
 # This is based on area1 with adjusted numbers.

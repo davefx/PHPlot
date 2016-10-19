@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: legendtxbgcolor.php 1553 2013-03-27 00:22:29Z lbayuk $
 # PHPlot test: Legend text & background color, baseline
 # Based on discussion forum post 1/15/2013
 # This is a parameterized test. Other scripts can set $tp and then include

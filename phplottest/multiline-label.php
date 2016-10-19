@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: multiline-label.php 1001 2011-08-08 02:22:55Z lbayuk $
 # Multi-line data labels - baseline: TTf at 0 deg
 require_once 'config.php';
 $ttfont = $phplot_test_ttfdir . '/' . $phplot_test_ttfonts['sans'];

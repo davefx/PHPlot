@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: stackedbarlabelclip.php 1001 2011-08-08 02:22:55Z lbayuk $
 # Stacked bar plots with data labels, raised X axis covering some points
 require_once 'phplot.php';
 $data = array(

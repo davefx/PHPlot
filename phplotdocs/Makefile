@@ -1,4 +1,4 @@
-# $Id$
+# $Id: Makefile 1789 2015-11-05 22:46:49Z lbayuk $
 # Makefile for PHPlot Programmer's Reference Manual (Docbook-xml version)
 # This uses xsltproc to generate HTML output.
 # And it uses xsltproc, xmllint, and Apache fop for PDF output.
@@ -96,6 +96,8 @@ STATIC_IMAGES=\
   images/thumbnail-pie.png \
   images/thumbnail-points.png \
   images/thumbnail-squared.png \
+  images/thumbnail-squaredarea.png \
+  images/thumbnail-stackedsquaredarea.png \
   images/thumbnail-stackedarea.png \
   images/thumbnail-stackedbars.png \
   images/thumbnail-thinbarline.png \
@@ -164,10 +166,12 @@ EXAMPLES_PHP=\
   examples/qs2.php \
   examples/qs3.php \
   examples/squared1.php \
+  examples/squaredarea1.php \
   examples/stackedarea1.php \
   examples/stackedbars1.php \
   examples/stackedbars2.php \
   examples/stackedbars3.php \
+  examples/stackedsquaredarea1.php \
   examples/thinbarline1.php \
   examples/thinbarline2.php \
   examples/twoplot1.php \
@@ -228,10 +232,12 @@ EXAMPLES_IMAGES=\
   examples/qs2.png \
   examples/qs3.png \
   examples/squared1.png \
+  examples/squaredarea1.png \
   examples/stackedarea1.png \
   examples/stackedbars1.png \
   examples/stackedbars2.png \
   examples/stackedbars3.png \
+  examples/stackedsquaredarea1.png \
   examples/thinbarline1.png \
   examples/thinbarline2.png \
   examples/twoplot1.png \
@@ -356,6 +362,6 @@ examples/pielabeltype5.png: examples/pielabeltype5.php examples/pielabeltypedata
 # === For building the variable list documentation ===
 
 $(VARIABLE_LIST): variables.list gen.vardoc 
-	./gen.vardoc < variables.list > $(VARIABLE_LIST)
+	$(PHP) gen.vardoc < variables.list > $(VARIABLE_LIST)
 
 # ===

@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: error-option.php 1001 2011-08-08 02:22:55Z lbayuk $
 # PHPlot error test - bad option checking (bug in PHPlot<=5.0.4, inadequate check)
 require_once 'phplot.php';
 

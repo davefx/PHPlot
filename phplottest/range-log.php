@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: range-log.php 1557 2013-03-27 00:25:37Z lbayuk $
 # PHPlot test: Log/log scales
 # Note: This checks for a bug in PHPlot-5.8.0 and earlier where it
 # only checked Y, not X for 0 when log scale was on, and so it missed

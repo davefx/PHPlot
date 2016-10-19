@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: labeline2.php 1001 2011-08-08 02:22:55Z lbayuk $
 # X Label Alignment - wider spacing
 # This is a parameterized test. See the script named at the bottom for details.
 $tp = array(

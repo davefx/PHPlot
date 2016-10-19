@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: area1.php 1001 2011-08-08 02:22:55Z lbayuk $
 # PHPlot Example: Area chart, 6 areas.
 require_once 'phplot.php';
 

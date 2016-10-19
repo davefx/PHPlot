@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: pointcountbug.php 1001 2011-08-08 02:22:55Z lbayuk $
 # Bug 2963757 - point_counts undefined error at 5.1.0
 # The bug is triggered with same-size point shape and point size arrays.
 require_once 'phplot.php';

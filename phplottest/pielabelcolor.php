@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: pielabelcolor.php 1171 2012-02-19 01:31:53Z lbayuk $
 # PHPlot test: Pie label color - baseline
 # Other scripts can set $case and include this script:
 #   case 0) Baseline - no colors set. Labels will be black.

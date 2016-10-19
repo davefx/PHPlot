@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: stackedbarzero.php 1001 2011-08-08 02:22:55Z lbayuk $
 # PHPlot test: Stacked Bars with zero segments - master
 require_once 'phplot.php';
 # This is a parameterized test. Other scripts can set the variables

@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: manyplots.php 1001 2011-08-08 02:22:55Z lbayuk $
 # Many plots in one image
 # 09/20/2007 From posting: "More Plots on One Image"
 # Corrected boundaries and inserted fake titles and data.

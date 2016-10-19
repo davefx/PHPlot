@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: horzbar4.php 1001 2011-08-08 02:22:55Z lbayuk $
 # Horizontal bars - case 4 options
 # This is a parameterized test. See the script named at the bottom for details.
 $tp = array_merge(array(

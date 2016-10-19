@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: u.pmarg.php 1376 2012-08-15 02:09:16Z lbayuk $
 # Unit test for partial margin settings.
 # This tests the cases with partial specification of plot area or margins.
 # Each of SetMarginsPixels() and SetPlotAreaPixels has 4 arguments, any of

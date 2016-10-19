@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: change-lines.php 1001 2011-08-08 02:22:55Z lbayuk $
 # From PHPlot Help Forum, 2005-04-10: Lines which change color and from
 # solid to dash. This produced a bug report which has been fixed.
 require_once 'phplot.php';

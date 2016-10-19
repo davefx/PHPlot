@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: date3.php 1001 2011-08-08 02:22:55Z lbayuk $
 # PHPlot test: Date X axis labels, with data-data, data labels with suppression
 # This is a new feature added to PHPlot after 5.0rc3, to ignore blanks
 # as date/time labels.

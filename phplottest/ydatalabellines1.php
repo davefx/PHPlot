@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: ydatalabellines1.php 1413 2012-09-18 21:05:53Z lbayuk $
 # Testing PHPlot: Y Data Label Lines, for horizontal plots - case 1
 # This is a parameterized test. See the script named at the bottom for details.
 $tp = array(

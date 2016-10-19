@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: imagemap_html-pi.php 1219 2012-03-19 21:16:21Z lbayuk $
 # PHPlot Test - Image map and embedded image - pie
 # This writes an HTML file to the directory named by the environment
 # variable RESULTDIR (if defined), and does a simple pattern match to check.

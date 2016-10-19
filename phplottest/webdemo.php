@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: webdemo.php 1001 2011-08-08 02:22:55Z lbayuk $
 # PHPlot Demo - from phplot.sourceforge.net
 # This version is for the test suite. It uses a different font.
 

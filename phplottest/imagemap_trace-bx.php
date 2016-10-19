@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: imagemap_trace-bx.php 1621 2013-04-26 02:22:44Z lbayuk $
 # PHPlot test: Box plot, with image map area outlines shown.
 # This produces a plot image with the areas that would be in an image map
 # outlined. It does not produce HTML or an image map.

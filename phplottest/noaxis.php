@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: noaxis.php 1001 2011-08-08 02:22:55Z lbayuk $
 # Testing phplot - Suppress axis lines - baseline/master
 require_once 'phplot.php';
 # Test case is selected by $case.

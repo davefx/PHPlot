@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: testclass.php 1001 2011-08-08 02:22:55Z lbayuk $
 # PHPlot test support - superclass
 # This script defines 2 superclasses of PHPlot which are for testing.
 #

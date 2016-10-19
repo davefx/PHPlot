@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: empty-plot.php 1001 2011-08-08 02:22:55Z lbayuk $
 # PHPlot test - empty plot tests (no data = no graph with no error)
 # This is a parameterized test. Set plot_type, optionally data_type and
 # call this script.

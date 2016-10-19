@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: ex-ohlccandlesticks2.php 1525 2013-03-02 18:31:29Z lbayuk $
 # PHPlot Example: OHLC (Financial) plot, Filled Candlesticks plot, using
 # external data file, data-data format with date-formatted labels.
 define('DATAFILE', 'ohlcdata.csv'); // External data file

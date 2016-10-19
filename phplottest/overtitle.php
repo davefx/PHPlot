@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: overtitle.php 1001 2011-08-08 02:22:55Z lbayuk $
 # Title overwrite with TTF text - bug report 3010116
 # (Copied from manyplots.php test script)
 

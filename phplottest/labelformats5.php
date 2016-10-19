@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: labelformats5.php 1001 2011-08-08 02:22:55Z lbayuk $
 # Test types of label formatting 5 - obsolete data_units_text
 require_once 'phplot.php';
 require_once 'config.php'; // Uses TTF for variety

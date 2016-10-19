@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: tc-bars.php 1001 2011-08-08 02:22:55Z lbayuk $
 # PHPlot test: Truecolor bars/stacked bars plot, alpha and/or shading
 # Parameters that can be set externally:
 if (!isset($shading)) $shading = 0; // Shading, empty string to omit

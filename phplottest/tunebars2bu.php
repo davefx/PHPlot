@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: tunebars2bu.php 1001 2011-08-08 02:22:55Z lbayuk $
 # PHPlot test: Bar chart tuning variables - spread out unshaded bars
 # This is a parameterized test. See the script named at the bottom for details.
 $tp = array(

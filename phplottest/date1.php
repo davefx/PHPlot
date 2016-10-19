@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: date1.php 1001 2011-08-08 02:22:55Z lbayuk $
 # Testing phplot - Date X axis labels
 require_once 'phplot.php';
 

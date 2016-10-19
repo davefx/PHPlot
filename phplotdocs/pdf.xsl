@@ -5,7 +5,7 @@
                 exclude-result-prefixes="xlink"
                 version='1.0'>
 
-<!-- $Id$ -->
+<!-- $Id: pdf.xsl 857 2011-01-12 02:25:13Z lbayuk $ -->
 <!-- Docbook XML Style sheet for PHPlot Reference Manual -->
 <!-- Load the DocBook XML Style sheet for FO (Format Objects).
      If your XML catalog system is working, this URL will map into a local

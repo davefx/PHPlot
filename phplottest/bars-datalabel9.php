@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: bars-datalabel9.php 1001 2011-08-08 02:22:55Z lbayuk $
 # PHPlot test: Bars with datalabel - 9
 # This is a parameterized test. See the script named at the bottom for details.
 # This has to override the data array, because we need large numbers.

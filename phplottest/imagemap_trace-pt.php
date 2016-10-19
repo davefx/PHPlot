@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: imagemap_trace-pt.php 1189 2012-02-21 21:00:25Z lbayuk $
 # PHPlot test: Points plot, with image map areas marked
 # This produces a plot image indicating the areas that would be in an image
 # map. It does not produce HTML or an image map.

@@ -1,5 +1,5 @@
 <?php
-/* $Id$
+/* $Id: data_table.php 1000 2011-08-06 01:19:27Z lbayuk $
 phplot / contrib / data_table.php: Draw a table of data values
 
      Copyright (c) 2011, lbayuk -at- users.sourceforge.net

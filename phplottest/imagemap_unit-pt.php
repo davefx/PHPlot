@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: imagemap_unit-pt.php 1190 2012-02-21 21:00:33Z lbayuk $
 # PHPlot Unit test: Image map with points plot
 # This generates (and discards) a plot, and checks the image map data.
 require_once 'phplot.php';

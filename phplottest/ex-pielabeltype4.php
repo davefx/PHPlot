@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: ex-pielabeltype4.php 1027 2011-12-30 16:58:37Z lbayuk $
 # PHPlot Example: Pie Chart Label Types - Index and custom callback
 # This requires PHPlot >= 5.6.0
 require_once 'phplot.php';

@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: range-datex2a.php 1557 2013-03-27 00:25:37Z lbayuk $
 # PHPlot test: Date/time range on X axis
 #            H  M  S  mo da yr
 $t1 = mktime(0, 0, 0, 8, 1, 2010);

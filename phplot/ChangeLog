@@ -2,6 +2,103 @@ This is the Change Log for PHPlot.
 The project home page is http://sourceforge.net/projects/phplot/
 -----------------------------------------------------------------------------
 
+2016-01-01
+    * Mark as pre-release version 6.2.1 and extend copyright to 2016.
+
+    * Feature Request #59 "Hide legend border, control legend border color":
+      Added ability to control the legend border color (independent of
+      the grid color), and also the ability to disable the legend border.
+      + Added new function SetDrawLegendBorder() to disable the border.
+      + Added new function SetLegendBorderColor() to set the color used
+        for the legend border. If this isn't used, the color set with
+        SetGridColor() is used, so this is fully backward compatible.
+      + New protected class variables draw_legend_border,
+        legend_border_color, and ndx_legend_border_color.
+
+2015-11-03 ===== Released as 6.2.0 =====
+    * phplot.php: Updated version comment
+    * README.txt: Updated for new release
+    * NEWS.txt: Add text for new release
+
+2015-10-31
+    * Feature Request #58 "data borders for area plot types":
+      Moved the code for data borders from DrawSquaredArea() into a new
+      internal function DrawAreaFillBorders(). Use that function in both
+      DrawSquaredArea() and DrawArea() to implement data borders for all 4
+      plot types (area, stackedarea, squaredarea, and stackedsquaredarea).
+
+      Note: There is a problem with the data borders in area and squaredarea
+      plots, when the data values are not decreasing in Y. The areas overlap
+      but the data borders are drawn without regard for the overlap. This is
+      not from this change, but the previous change which implemented data
+      borders for squaredarea plots. More on this to come.
+
+2015-10-30
+    * Fixed comments on functions and variables for data borders, which are
+      no longer used only for bar and stackedbar plot types.
+
+2015-10-25
+    * Feature Request #57 "squarefilled plot type":
+      + Defined 2 new plot types: squaredarea and stackedsquaredarea.
+      + Added new internal function SetupAreaPlot() which sets up for an
+        area fill plot, using code moved from DrawArea().
+      + Changed DrawArea() to use SetupAreaPlot(). Also fixed mis-named
+        variables: row versus column.
+      + Added new internal function DrawSquaredArea() to draw the new plot
+        types squaredarea and stackedsquaredarea.  This uses the new
+        SetupAreaPlot(), draws the area fills and optional border.
+
+2015-10-22
+    * Changed version to 6.2.0-unreleased (was: 6.1.1-unreleased).
+
+    * Feature Request #56 "Hidden Y values when zero":
+      Extended the 'printf' label formatting type by allowing 1-3 format
+      strings. Selection of a format string depends on the sign of the value
+      being formatted (similar to the way spreadsheets do cell formatting).
+      This supports a wide variety of format variations, including the one
+      requested in this FR, without having to use a custom function.
+      + Changed SetLabelType() to accept up to 3 format strings, and store
+        then in the class variable as an array.
+      + Changed FormatLabel() to accept a format string, or an array of
+        1, 2, or 3 format strings, and select among them based on the sign
+        of the value being formatted.
+
+2015-08-29
+    * Fixed bug #172 "Fixes for PHP7":
+      PHP7 (currently pre-release) deprecates the use of the class name
+      as the constructor, which was how PHP4 did it. Fixed the constructor
+      name to work with PHP7. Note this may affect extended classes.
+
+2015-03-25
+    * Fixed bug #170 "Replace eval():...":
+      Removed the one use of eval() in PHPlot, because eval() makes people
+      nervous, is incompatible with some VM setups, and the specific usage
+      was hard to understand.  Changed SetDefaultDashedStyle() to create a
+      string template (rather than a code string) in the class variable
+      default_dashed_style. Changed internal SetDashedStyle() to apply the
+      template without eval(). There is no change to the API or behavior,
+      except PHPlot now validates the dashed line specification argument to
+      SetDefaultDashedStyle() more thoroughly.
+
+2015-03-21
+    * Feature Request #55 "Method documentation in phpdoc format":
+      Added phpdoc comments (docblocks). All class functions (methods) now
+      have docblocks with summary, parameters, and return value (other than
+      the old deprecated functions, which have just a @deprecated tag).
+      phpDocumentor2 is able to generate documentation from the source, but
+      there is no plan to use this to replace any portion of the PHPlot
+      Reference Manual.
+
+      In order to accommodate phpDocumentor2 problems with functions that take
+      variable argument lists, while remaining compatible with PHP 5.5 and
+      PHP 5.4, it was necessary to change the parameter lists for 5 public
+      methods and 2 protected methods. No change was made to the usage of
+      these functions: unused parameter names were added, with NULL defaults,
+      so phpdoc '@param' tags could be used for them.
+
+    * Mark as pre-release 6.1.1
+    * Makefile: Added phpdoc target to run phpDocumentor2.
+
 2013-05-11 ===== Released as 6.1.0 =====
     * phplot.php: Updated version comment and version constant
     * README.txt: Updated for new release, fix copyright year

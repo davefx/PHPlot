@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: legendcolors.php 1001 2011-08-08 02:22:55Z lbayuk $
 # PHPlot Test: difference between data set count and legend lines
 # Tests for a possible issue (which was fixed) when the number
 # of lines in the legend is greater than the number of data columns,

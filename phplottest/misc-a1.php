@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: misc-a1.php 1352 2012-07-27 02:17:04Z lbayuk $
 # PHPlot test: Miscellaneous options: color map, line spacing, grid line style
 # This is a parameterized test. See the script named at the bottom for details.
 

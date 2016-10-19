@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: ex-horizlinepts.php 1481 2012-12-29 22:48:08Z lbayuk $
 # PHPlot Example - Horizontal linepoints plot with Y Data Label Lines
 require_once 'phplot.php';
 

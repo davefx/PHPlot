@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: stock.php 1001 2011-08-08 02:22:55Z lbayuk $
 # Testing phplot - "Stock market" plot, using error bars
 # This is a parameterized test. Other scripts can set $tp and then include
 # this script. The parameters are shown in the defaults array below:

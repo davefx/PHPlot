@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: overlay3.php 1361 2012-08-03 22:52:56Z lbayuk $
 # PHPlot test: Overlay squared + points plot
 require_once 'phplot.php';
 

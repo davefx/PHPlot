@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: data_table.example3.php 999 2011-08-05 19:00:48Z lbayuk $
 # phplot / contrib / data_table example 3:  Pie chart with data table
 require_once 'phplot.php';
 require_once 'data_table.php';

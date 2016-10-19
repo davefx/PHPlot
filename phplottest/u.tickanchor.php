@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: u.tickanchor.php 1359 2012-08-03 21:47:34Z lbayuk $
 # Unit test for X/Y tick anchors
 require_once 'phplot.php';
 $cases = 0;

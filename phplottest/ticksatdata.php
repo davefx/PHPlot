@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: ticksatdata.php 1001 2011-08-08 02:22:55Z lbayuk $
 # Testing phplot - Tick marks at data points (requires phplot >= 5.4.0)
 require_once 'phplot.php';
 $data = array();

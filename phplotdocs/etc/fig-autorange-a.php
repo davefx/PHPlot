@@ -1,5 +1,5 @@
 <?php
-# $Id$
+# $Id: fig-autorange-a.php 1560 2013-03-27 20:22:36Z lbayuk $
 # PHPlot Reference: generate figures showing automatic range adjustment
 # This generates one of 3 figures (see $case below), each with 4 plots
 # showing the cumulative steps for automatic range calculation.
